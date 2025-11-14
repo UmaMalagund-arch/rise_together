@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NGO Registration Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background-color: #f4f4f4;
+    }
+    .Heading{
+        color: rgb(45,1,78);
+    }
+    .form-container {
+      background: #fff;
+      padding: 30px;
+      max-width: 700px;
+      margin: auto;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .radio-group {
+      display: flex;
+      gap: 20px;
+      margin-top: 10px;
+    }
+    .radio-group label {
+      font-weight: normal;
+    }
+    button {
+      margin-top: 25px;
+      background-color: rgb(45,1,78);
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #4a117e;
+    }
+    .required{
+        color: red;
+    }
+    .acceptBox{
+        position: relative;
+        left: -350px;
+        top: 20px;
+    }
+    .acceptContent{
+        position: relative;
+        left: 30px;
+        top: -15px;
+    }
+ .wave-inside {
+      width: 100%;
+      height: 150px;
+      background-image: linear-gradient(rgb(45, 1, 78), rgb(250, 249, 249));
+      position: relative;
+    }
+
+    .wave-inside::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  background: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1440 320' xmlns='http://www.w3.org/2000/svg'><path fill='%23ffffff' fill-opacity='1' d='M0,192L60,165.3C120,139,240,85,360,74.7C480,64,600,96,720,128C840,160,960,192,1080,170.7C1200,149,1320,75,1380,37.3L1440,0L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z'></path></svg>") no-repeat bottom;
+  background-size: cover;
+}
+  </style>
+</head>
+<body>
+
+<div class="form-container">
+    <div class="wave-inside"></div>
+  <h2 class="Heading">NGO Registration Form</h2>
+  <form action="#" method="post">
+    <label for="ngoName">NGO Name: <span class="required">*</span></label>
+    <input type="text" id="ngoName" name="ngoName" required>
+
+    <label for="profile">NGO Profile / Description:</label>
+    <textarea id="profile" name="profile" rows="4" ></textarea>
+
+    <label for="address">Address:<span class="required">*</span></label>
+    <textarea id="address" name="address" rows="2" ></textarea>
+
+    <label for="pin">Pin Code:<span class="required">*</span></label>
+    <input type="text" id="pin" name="pin" >
+
+    <label for="telephone">Telephone Number:<span class="required">*</span></label>
+    <input type="tel" id="telephone" name="telephone" >
+
+    <label for="email">Email Address:<span class="required">*</span></label>
+    <input type="email" id="email" name="email" >
+
+    <label for="contactPerson">Contact Person Name:<span class="required">*</span></label>
+    <input type="text" id="contactPerson" name="contactPerson" >
+
+    <label for="mobile">Contact Person Mobile Number:<span class="required">*</span></label>
+    <input type="tel" id="mobile" name="mobile" >
+
+    <label>Type of Registration:<span class="required">*</span></label>
+    <div class="radio-group">
+      <label><input type="checkbox" name="regType" value="Trust" > Trust</label>
+      <label><input type="checkbox" name="regType" value="Society"> Society</label>
+      <!-- <label><input type="checkbox" name="regType" value="Section8"> Section 8 Company</label> -->
+    </div>
+
+    <label for="regNumber">NGO Registration Number:<span class="required">*</span></label>
+    <input type="text" id="regNumber" name="regNumber" >
+
+    <label for="regDate">Date of Registration:<span class="required">*</span></label>
+    <input type="date" id="regDate" name="regDate">
+     <label>
+      <input type="checkbox" name="acceptTerms" class="acceptBox">
+     <p class="acceptContent"><span class="required">*</span> I accept the <a href="#">terms and conditions</a> </p>
+    </label>
+
+    <center><button type="submit">Submit</button></center>
+  </form>
+</div>
+
+</body>
+</html>

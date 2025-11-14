@@ -1,0 +1,60 @@
+#navbar{
+border:0px solid;
+height:54px;
+width:100%;
+display: flex;
+background-color: rgba(252, 250, 253, 0.242);
+align-items: center;
+justify-content: space-between;
+/* background-image: linear-gradient( orange); */
+color:rgb(45, 1, 78);
+position: sticky;
+top: 45px;
+z-index: 2000;
+}
+#LogoContent{
+border:0px solid;
+height:60px;
+width:50%;
+display: flex;
+align-items: center;
+justify-content: space-around;
+}
+.Logo{
+  border: 0px solid red;
+height: 53px;
+width: 150px;
+display: flex;
+mix-blend-mode: multiply;
+align-items: center;
+/* background-image: url("https://thumbs.dreamstime.com/b/helping-hands-care-hands-logo-318500757.jpg");
+background-repeat: no-repeat;
+background-size: 100% 100%;
+mix-blend-mode: multiply; */
+}
+#logoimage{
+  height: 53px;
+  width: 100px;
+  mix-blend-mode: multiply;
+}
+#Login{
+border:0px solid;
+height:60px;
+width:200px;
+display: flex;
+align-items: center;
+justify-content: space-around;
+position: relative;
+left: 250px
+}
+#navContent{
+font-size: larger;
+font-weight: bold;
+font-family: 'Times New Roman', Times, serif;
+}
+.joinus{
+  color: rgb(46, 3, 90);
+  text-decoration: none;
+  color: inherit;
+  
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Reports</title>
+    <style>
+        .report-card {
+            width: 300px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            padding: 16px;
+            margin: 16px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            display: inline-block;
+            vertical-align: top;
+        }
+        .report-card img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 12px;
+            cursor: pointer;
+        }
+        .report-card h3 {
+            margin: 8px 0;
+        }
+        .report-card p {
+            margin: 4px 0;
+            font-size: 14px;
+        }
+        .status-btn {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 13px;
+            margin-top: 10px;
+            border: none;
+        }
+        .status-pending { background-color: green; }
+        .status-rejected { background-color: red; }
+        .status-approved { background-color: blue; }
+    </style>
+</head>
+<body>
+    <h1 style="text-align:center;">Reported Individuals</h1>
+
+    <div id="Report-card">
+        <div id="Reports">
+            <!-- Loop through persons -->
+            <div class="report-card" th:each="person : ${persons}">
+                <!-- Person Image -->
+                <img th:src="@{'/uploads/' + ${person.image}}" alt="Person Photo"
+                     th:onclick="|showFullImage('/uploads/' + [[${person.image}]])|" />
+
+                <!-- Person Details -->
+                <h3 th:text="${person.name}">Name</h3>
+                <p><strong>Age:</strong> <span th:text="${person.age}">25</span></p>
+                <p><strong>Category:</strong> <span th:text="${person.category}">Orphan</span></p>
+                <p><strong>Location:</strong> <span th:text="${person.location}">City</span></p>
+                <p><strong>Mobile:</strong> <span th:text="${person.mobile}">1234567890</span></p>
+                <p><strong>Email:</strong> <span th:text="${person.ngoId.email}">ngo@mail.com</span></p>
+
+                <!-- Status -->
+                <button class="status-btn"
+                        th:classappend="${person.status == 'pending'} ? ' status-pending' :
+                                        (person.status == 'approved' ? ' status-approved' : ' status-rejected')"
+                        th:text="${person.status}">
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script for full image preview -->
+    <script>
+        function showFullImage(src) {
+            let img = document.createElement("img");
+            img.src = src;
+            img.style.maxWidth = "90%";
+            img.style.maxHeight = "90%";
+            img.style.display = "block";
+            img.style.margin = "20px auto";
+            img.style.borderRadius = "12px";
+
+            let overlay = document.createElement("div");
+            overlay.style.position = "fixed";
+            overlay.style.top = "0";
+            overlay.style.left = "0";
+            overlay.style.width = "100%";
+            overlay.style.height = "100%";
+            overlay.style.background = "rgba(0,0,0,0.8)";
+            overlay.style.display = "flex";
+            overlay.style.alignItems = "center";
+            overlay.style.justifyContent = "center";
+            overlay.appendChild(img);
+            overlay.onclick = () => document.body.removeChild(overlay);
+
+            document.body.appendChild(overlay);
+        }
+    </script>
+</body>
+</html>

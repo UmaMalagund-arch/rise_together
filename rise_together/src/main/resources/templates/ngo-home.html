@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>NGO Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      height: 100vh;
+      background-color: #f4f4f4;
+    }
+
+    .sidebar {
+      width: 280px;
+      background-color: rgb(48,1,75);
+      color: white;
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar h2 {
+      margin-bottom: 30px;
+      font-size: 22px;
+      text-align: center;
+    }
+
+    .sidebar div {
+      cursor: pointer;
+      color: white;
+      padding: 14px 15px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      border-radius: 8px;
+      transition: background 0.3s;
+      font-size: 16px;
+    }
+
+    .sidebar div:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .sidebar i {
+      margin-right: 12px;
+      font-size: 18px;
+    }
+
+    .sidebar .fa-clipboard-list { color: #ffcc00; }
+    .sidebar .fa-donate         { color: #4caf50; }
+    .sidebar .fa-calendar-alt   { color: #2196f3; }
+    .sidebar .fa-sign-out-alt   { color: #f44336; }
+
+    .main-content {
+      flex-grow: 1;
+      padding: 30px;
+      overflow-y: auto;
+      width: 100%;
+    }
+
+    .main-content h1 {
+      font-size: 28px;
+      color: rgb(48,1,75);
+      margin-bottom: 30px;
+    }
+
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .report-card {
+      background: white;
+      padding: 28px;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+      width: 30%;
+      min-height: 550px;
+      font-size: 17px;
+      text-align: center;
+    }
+
+    .report-card .citizen-info {
+      margin-bottom: 14px;
+    }
+
+    .citizen-info span {
+      display: block;
+      font-size: 16px;
+    }
+
+    .citizen-info .top-line {
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .label {
+      font-weight: bold;
+      color: rgb(48,1,75);
+      margin: 10px 0;
+      font-size: 18px;
+    }
+
+    .round-img {
+      width: 140px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .round-img:hover {
+      transform: scale(1.05);
+    }
+
+    .full-image {
+      margin-top: 12px;
+      display: none;
+      border-radius: 12px;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .details {
+      margin-top: 16px;
+      text-align: left;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      flex-direction: column;
+    }
+
+    .details p {
+      margin: 6px 0;
+    }
+
+    .status-btn {
+      width: 75%;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      margin-top: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .pending  { background-color: rgb(48,1,75); color: white; }
+    .rejected { background-color: #f44336; color: white; }
+    .approved { background-color: #2196f3; color: white; }
+
+    .mobile { position: relative; top: -16px; right: -77px; }
+    .email  { position: relative; left: -70px; }
+    .name   { position: relative; left: -38px; }
+    .age    { position: relative; left: -74px; }
+    .category     { position: relative; left: 10px; }
+    .report-date  { position: relative; left: 3px; }
+
+    /* Section visibility control */
+    .main-section { display: none; }
+    #dashboard { display: block; }
+
+    /* profilee */
+    .profile-container {
+      max-width: 60%;
+      margin: 20px auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .banner-image {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .header-section {
+      display: flex;
+      align-items: center;
+      padding: 20px 30px;
+      gap: 20px;
+    }
+
+    .header-section img.logo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      object-fit: cover;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .header-section .ngo-name {
+      font-size: 26px;
+      font-weight: 600;
+      color: #30014b;
+    }
+
+    .profile-content {
+      padding: 0 30px 30px;
+    }
+
+    .profile-content p {
+      font-size: 16px;
+      color: #444;
+      margin: 12px 0;
+    }
+
+    .icon {
+      color: #2575fc;
+      margin-right: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .header-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .header-section .ngo-name {
+        font-size: 22px;
+      }
+    }
+    .banner-image{
+        background-color: #d4f1d5;
+    }
+    #icon{
+      color: #30014b;
+    }
+     .welcome-heading {
+    text-align: center;
+    font-size: 5cap;
+    position: relative;
+    top: -150px;
+    font-weight: 800;
+    margin: 30px 0;
+    background: linear-gradient(to right, yellow, #b30059, green); /* Yellow, NGO Color, Green */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: fadeIn 1s ease-in-out;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>NGO Panel</h2>
+    <a th:href="@{/ngo/home/ngoPage}" style="text-decoration:none;"><div><i class="fas fa-hand-holding-heart"></i>NGO</div></a>
+    <a th:href="@{/ngo/home/reports}" style="text-decoration:none;"><div><i class="fas fa-clipboard-list"></i>Reports</div></a>
+    <!-- <div onclick="showSection('reports')"><i class="fas fa-clipboard-list"></i> Reports</div> -->
+    <div onclick="showSection('donations')"><i class="fas fa-donate"></i> Donation Summary</div>
+    <div><a th:href="@{/ngo/home/event}" style="text-decoration:none;"><div><i class="fas fa-calendar-alt"></i> Events</div></a></div>
+    <div><i class="fas fa-sign-out-alt"></i> Logout</div>
+  </div>
+
+    <div th:if="${section} == 'event'">
+      <div th:replace="event :: content"></div>
+  </div>
+  <div th:if="${section} == 'ngo'">
+      <div th:replace="ngo :: content"></div>
+  </div>
+  <!-- <div th:if="${section} == 'report'">
+      <div th:replace="ngo :: content"></div>
+  </div> -->
+  <!-- Dashboard Section -->
+  <div id="dashboard" class="main-content main-section">
+    <div class="profile-container">
+    <div class="banner-image"> 
+      <img src="https://thumbs.dreamstime.com/b/helping-hands-care-hands-logo-318500757.jpg" alt="" height="200px" width="200px" style="mix-blend-mode: multiply;">
+    <h1 class="welcome-heading">Welcome to Dashboard</h1>
+    </div>
+    <!-- Logo and NGO Name -->
+    <div class="header-section">
+      <img class="logo" src="https://cdn.dribbble.com/userupload/4265414/file/original-bb8c4b94202aed0a11d025ef9932f3be.png?resize=1208x1207" alt="NGO Logo" style="mix-blend-mode: multiply;">
+      <div class="ngo-name"><span th:text="${ngoRegisterDTO.name}"></span></div>
+    </div>
+
+    <!-- Profile Info -->
+    <div class="profile-content">
+      <p><i class="fas fa-envelope icon" id="icon"></i><strong>Email:</strong><span th:text="${ngoRegisterDTO.email}" ></span> </p>
+      <p><i class="fas fa-phone icon" id="icon"></i><strong>Phone:</strong><span th:text="${ngoRegisterDTO.telephoneNumber}"></span></p>
+      <p><i class="fas fa-id-card icon" id="icon"></i><strong>Registration ID:</strong><span th:text="${ngoRegisterDTO.registerNumber}"></span></p>
+      <p><i class="fas fa-map-marker-alt icon" id="icon"></i><strong>Address:</strong><span th:text="${ngoRegisterDTO.address}"></span> </p>
+      <p><i class="fas fa-info-circle icon" id="icon"></i><strong>About Us:</strong><span th:text="${ngoRegisterDTO.description}"></span></p>
+    </div>
+  </div>
+</div>
+  <!-- Reports Section -->
+  <div id="reports" class="main-content main-section">
+    <h1>Reported Individuals</h1>
+    <div class="card-container">
+      <div th:each="report : ${reports}" class="report-card">
+        <div class="citizen-info">
+          <div class="top-line" th:text="${report.citizenName}">Username</div>
+          <span th:text="${report.citizenEmail}" class="email">email@example.com |</span> 
+          <span th:text="${report.citizenMobile}" class="mobile">+91 9876543210</span>
+        </div>
+
+        <div class="label">Reported Person</div>
+
+        <img th:src="@{${report.imagePath}}"
+             th:alt="${report.strangerName}"
+             class="round-img"
+             th:onclick="'showFullImage(this, ' + ${report.id} + ')'"/>
+
+        <img th:src="@{${report.imagePath}}"
+             th:id="'fullImage_' + ${report.id}"
+             class="full-image"
+             alt="Full Image" />
+
+        <div class="details">
+          <p><strong class="name">Name:</strong> <span th:text="${report.strangerName}" style="position: relative; left: -37px;">John Doe</span></p>
+          <p><strong class="age">Age:</strong> <span th:text="${report.strangerAge}" style="position: relative; left: -65px;">35</span></p>
+          <p><strong class="category">Category: </strong> <span th:text="${report.category}" style="position: relative; left: 8px;">Physically Unstable</span></p>
+          <p><strong class="report-date">Reported Date:</strong> 
+            <span th:text="${#dates.format(report.submittedAt, 'dd-MM-yyyy HH:mm:ss')}">01-08-2025</span>
+          </p>
+        </div>
+
+        <form th:action="@{/report/updateStatus}" method="post" th:id="'statusForm_' + ${report.id}">
+          <input type="hidden" name="reportId" th:value="${report.id}" />
+          <input type="hidden" name="status" th:value="${report.status}" th:id="'statusInput_' + ${report.id}" />
+
+          <button type="button"
+                  th:id="'statusBtn_' + ${report.id}"
+                  th:text="${report.status}"
+                  th:class="'status-btn ' + ${report.status.toLowerCase()}"
+                  onclick="toggleStatus(this)" class="status-btn pending">Pending
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Donations Section -->
+  <div id="donations" class="main-content main-section">
+    <h1>Donation Summary</h1>
+    <p>Donation details go here.</p>
+  </div>
+
+ 
+  <!-- JavaScript -->
+  <script>
+    function toggleStatus(button) {
+      const statusOrder = ['Pending', 'Rejected', 'Approved'];
+      const statusClass = {
+        'Pending': 'pending',
+        'Rejected': 'rejected',
+        'Approved': 'approved'
+      };
+
+      const reportId = button.id.split('_')[1];
+      const input = document.getElementById('statusInput_' + reportId);
+      const form = document.getElementById('statusForm_' + reportId);
+
+      let current = button.innerText.trim();
+      let nextIndex = (statusOrder.indexOf(current) + 1) % statusOrder.length;
+      let nextStatus = statusOrder[nextIndex];
+
+      button.innerText = nextStatus;
+      input.value = nextStatus;
+      button.className = 'status-btn ' + statusClass[nextStatus];
+      form.submit();
+    }
+
+    function showFullImage(img, id) {
+      const fullImg = document.getElementById('fullImage_' + id);
+      fullImg.style.display = (fullImg.style.display === 'block') ? 'none' : 'block';
+    }
+
+    // function showSection(sectionId) {
+    //   document.querySelectorAll('.main-section').forEach(s => s.style.display = 'none');
+    //   const selected = document.getElementById(sectionId);
+    //   if (selected) selected.style.display = 'block';
+    // }
+
+    // window.onload = function () {
+    //   showSection('dashboard');
+    // };
+
+    
+  </script>
+</body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Donation Campaign</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<style>
+  body {
+  font-family: Arial, sans-serif;
+  background-color: #fafafa;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 80%;
+  margin: 20px auto;
+}
+
+h2 {
+  font-size: 26px;
+  margin-bottom: 15px;
+}
+
+.main-content {
+  display: flex;
+  gap: 20px;
+}
+
+.left-panel, .right-panel {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  flex: 1;
+  box-shadow: 0 0 10px rgba(48, 1, 75, 0.362);
+}
+
+table {
+  width: 100%;
+  margin-top: 10px;
+  border-collapse: collapse;
+}
+
+table th, table td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+.goal-box {
+  background-color: #eee5ff;
+  padding: 20px;
+  margin-top: 35px;
+  border-radius: 10px;
+}
+
+.goal-box h2 {
+  color: #2d2d2d;
+}
+
+.amount-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.amount-buttons button,
+.amount-buttons input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.amount-buttons .highlight {
+  background-color: #fff;
+  border: 2px solid orange;
+  font-weight: bold;
+}
+
+.circle-progress {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 8px solid #ddd;
+  border-top: 8px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin: auto;
+  position: relative;
+  right: 35px;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+  gap: 100px;
+  font-size: 14px;
+}
+
+.amount-options {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.amount-options button {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  background: #f9f9f9;
+  cursor: pointer;
+}
+
+select, input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+
+.currency-row {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.currency-row select,
+.currency-row input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+
+.qr-and-payments {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-top: 15px;
+  position: relative;
+  left: 50px;
+}
+
+.qr {
+  width: 240px;
+  height: auto;
+}
+
+.payment-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.payment-methods button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background-color: #f2f2f2;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.payment-methods img {
+  width: 30px;
+  height: 30px;
+}
+
+
+.donate-now {
+  width: 100%;
+  background: linear-gradient(to right, rgb(159, 95, 196), rgb(48,1,75));
+  color: white;
+  padding: 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.amount-btn{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 50px;
+    gap: 10px;
+}
+
+</style>
+<body>
+  <div class="container">
+    <h2>|Be a reason for change</h2>
+    <br>
+    <div class="main-content">
+      <!-- Left section -->
+      <div class="left-panel">
+        <h2>Where Your Money Goes ?</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Categories</th>
+              <th>Required Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Urgent</td><td>000</td></tr>
+            <tr><td>Children</td><td>000</td></tr>
+            <tr><td>Elderly</td><td>000</td></tr>
+            <tr><td>Hunger</td><td>000</td></tr>
+            <tr><td>Special-abled</td><td>000</td></tr>
+          </tbody>
+        </table>
+        <div class="goal-box">
+          <h3>Total Campaign Goal</h3>
+          <h2>₹ 0,00,00,000</h2>
+          
+          <div class="amount-buttons">
+            <div class="amount-btn">
+            <button>₹1100</button>
+            <button style="width: 180px; font-size: 12px; border-color: rgb(48,1,75);"><b>₹1500</b><br>Most Donated</button>
+            <button>₹3000</button>
+            <input type="text" placeholder="Enter Amount"/>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right section -->
+<div class="right-panel">
+  <div class="circle-progress">0%</div>
+
+  <div class="stats">
+    <span>0 Donors</span>
+    <span>0 Worth Products Raised</span>
+  </div>
+
+  <div class="amount-options">
+    <button>₹1,000</button>
+    <button>₹1,800</button>
+    <button>₹3,000</button>
+  </div>
+
+  <!-- Currency and Input side-by-side -->
+  <div class="currency-row">
+    <select>
+      <option value="INR">INR</option>
+      <option value="EUR">EUR</option>
+      <option value="USD">USD</option>
+      <option value="GBP">GBP</option>
+    </select>
+    <input type="number" placeholder="1500"  style="height: 18px; position: relative; top: 9px;"/>
+  </div>
+
+  <h4>DONATE VIA:</h4>
+
+  <!-- QR + Payment options side-by-side -->
+  <div class="qr-and-payments">
+    <img src="https://www.dummies.com/wp-content/uploads/324172.image0.jpg" alt="QR Code" class="qr" width="40%" height="200px"/>
+
+    <div class="payment-methods">
+      <button><img src="https://i.pinimg.com/originals/ae/5f/e3/ae5fe3dc423e44c0ddbef5dc64fa356b.png" alt="PhonePe"/> PhonePe</button>
+      <button><img src="https://seeklogo.com/images/G/google-pay-logo-BFDEA14F81-seeklogo.com.png" alt="Google Pay"/> Google Pay</button>
+      <button>💳 Bhim UPI</button>
+      <button>➕ Others</button>
+    </div>
+  </div>
+
+  <button class="donate-now"> DONATE NOW</button>
+</div>
+
+    </div>
+  </div>
+</body>
+</html>

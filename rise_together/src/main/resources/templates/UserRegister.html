@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Register | Rise Together</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f2f2f2;
+            height: 80vh;
+            padding: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background: white;
+            padding: 0;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(45, 1, 78, 0.5);
+            overflow: hidden;
+        }
+        .wave-inside {
+            width: 100%;
+            height: 150px;
+            background-image: linear-gradient(rgb(45, 1, 78), rgb(250, 249, 249));
+            position: relative;
+        }
+        .wave-inside::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: url("data:image/svg+xml;utf8,<svg viewBox='0 5 1400 320' xmlns='http://www.w3.org/2000/svg'><path fill='%23ffffff' fill-opacity='1' d='M0,192L60,165.3C120,139,240,85,360,74.7C480,64,600,96,720,128C840,160,960,192,1080,170.7C1200,149,1320,75,1380,37.3L1440,0L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z'></path></svg>") no-repeat bottom;
+            background-size: cover;
+            transform: scaleX(-1);
+        }
+        .join {
+    padding: 20px; /* Reduce from 30px to 20px */
+    margin-top: -40px; /* Pull section up */
+}
+
+        h2 {
+    text-align: center;
+    color: rgb(45,1,78);
+    margin: 10px 0 20px 0; /* Reduce top space */
+    position: relative;
+    top: -40px; /* Move up */
+}
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="number"],
+        textarea {
+            width: 95%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.121);
+            font-size: 14px;
+        }
+        input::placeholder,
+        textarea::placeholder {
+            color: rgb(45,1,78);
+        }
+        input:focus,
+        textarea:focus {
+            border-color: rgb(45,1,78);
+            outline: none;
+        }
+        .error-message {
+            color: red;
+            font-size: 12px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-top: 6px;
+            display: block;
+        }
+        input[type="submit"] {
+            width: 100%;
+            background-color: rgb(45,1,78);
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: rgb(82, 22, 127);
+        }
+        #Form{
+            position: relative;
+            top: -20px;
+        }
+        .Ad{
+    color: rgb(45, 1, 78);
+    position: relative;
+    left:120px;
+    top: 5px;
+}
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="wave-inside"></div>
+    <div class="join">
+        <h2>Join-Us</h2>
+        <form action="/userregister" method="post" th:object="${userRegisterDto}" id="Form">
+
+            <div class="input-group">
+                <input type="text" placeholder="Username" th:field="*{username}">
+                <span class="error-message" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
+            </div>
+
+            <div class="input-group">
+                <input type="number" placeholder="Phone no." th:field="*{phone}">
+                <span class="error-message" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></span>
+            </div>
+
+            <div class="input-group">
+                <input type="email" placeholder="Email Address" th:field="*{email}">
+                <span class="error-message" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+            </div>
+
+            <div class="input-group">
+                <input type="password" placeholder="Password" th:field="*{password}">
+                <span class="error-message" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+            </div>
+
+            <div class="input-group">
+                <input type="password" placeholder="Confirm Password" th:field="*{confirmPassword}">
+                <span class="error-message" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}"></span>
+            </div>
+
+            <div class="input-group">
+                <textarea placeholder="Enter your address" th:field="*{address}"></textarea>
+                <span class="error-message" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></span>
+            </div>
+
+            <input type="submit" value="Register">
+            <div class="Ad">Already have an Account? <a href="/login" class="Ada" target="_blank"> Login</a></div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

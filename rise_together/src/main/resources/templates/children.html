@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Children Donations</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+  }
+    body {
+  font-family: Arial, sans-serif;
+  background: #f2f4f8;
+  margin: 0;
+  padding: 20px;
+}
+
+.nav-categories {
+  display: flex;
+  background-color: rgb(84, 15, 136);
+  color: white;
+  border-radius: 10px;
+  width: 60%;
+  flex-wrap: wrap;
+  gap: 50px;
+  margin-bottom: 20px;
+  margin-left: 270px;
+  font-size: 28px;
+  padding-left: 10px;
+  position: sticky;
+top: 40px;
+z-index: 1;
+}
+
+.nav-categories button {
+  padding: 8px 16px;
+  border: none;
+  background-color: #f5f5f500;
+  cursor: pointer;
+  border-radius: 8px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s;
+  font-size: 15px;
+  color: white; /* 👈 Add this line */
+}
+
+.nav-categories button:hover {
+  background-color: rgba(105, 8, 174, 0.588);
+  color: white;
+}
+
+.nav-categories button i {
+  margin-right: 6px;
+}
+
+
+
+.card-container {
+  display: grid;
+  width: 80%;
+  height: 350px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  position: relative;
+  left: 140px;
+}
+
+.donation-card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  padding: 0;
+}
+
+.donation-card img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+}
+
+.donation-card .tag {
+  background: #2ecc71;
+  color: white;
+  padding: 5px 10px;
+  font-size: 12px;
+  position: absolute;
+  margin: 10px;
+  border-radius: 4px;
+  display: inline-block;
+} 
+
+.donation-card h5 {
+  padding: 5px;
+  font-size: 14px;
+  margin: 0;
+  font-weight: lighter;
+  font-family: 'Times New Roman', Times, serif;
+  word-spacing: 2px;
+}
+
+.donation-card p {
+  padding: 0 10px 10px 10px;
+  color: #555;
+  font-size: 14px;
+  
+}
+
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  
+}
+
+.share-btn,
+.donate-btn {
+  border: none;
+  padding: 8px 12px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.share-btn {
+  background-color: #f0f0f0;
+}
+
+.donate-btn {
+  background-color: rgb(45, 1, 78);
+  color: white;
+}
+
+
+#navbar{
+border:0px solid;
+height:50px;
+width:100%;
+display: flex;
+background-color: whitesmoke;
+align-items: center;
+justify-content: space-between;
+/* background-image: linear-gradient( orange); */
+color:rgb(6, 6, 6);
+position: sticky;
+top: 0px;
+z-index: 1;
+}
+#LogoContent{
+border:0px solid;
+height:60px;
+width:50%;
+display: flex;
+align-items: center;
+justify-content: space-around;
+}
+#Login{
+border:0px solid;
+height:60px;
+width:200px;
+display: flex;
+align-items: center;
+justify-content: space-around;
+position: relative;
+left: 250px
+}
+#navContent{
+font-size: larger;
+font-weight: bold;
+width: 100%;
+font-family: 'Times New Roman', Times, serif;
+}
+
+#Quotes{
+    border: 0px solid;
+    height: 45px;
+    width: 100%;
+    background-color:rgb(45, 1, 78);
+    margin-top: -16px;
+}
+
+ .QuotesContent{
+  border: 0px solid red;
+  height: 400px;
+  width: 450px;
+  position: relative;
+  top: -450px;
+  left: 62%;
+  
+ }
+ .QuotesContentBeggers{
+   border: 0px solid red;
+  height: 400px;
+  width: 450px;
+  position: relative;
+  top: -450px;
+  left: 130%;
+ }
+ #textQuotes{
+  color: rgb(252, 250, 250);
+  font-family: 'Times New Roman', Times, serif;
+  
+ }
+  /* logo */
+ .Logo{
+  border: 0px solid red;
+height: 53px;
+width: 150px;
+display: flex;
+mix-blend-mode: multiply;
+align-items: center;
+}
+#logoimage{
+  height: 50px;
+  width: 100px;
+  mix-blend-mode: multiply;
+}
+</style>
+<body>
+  <div id="Quotes"><center><p style="color: white; letter-spacing: 1px; font-style: italic; word-spacing: 2px; position: relative; top: 7px; ">"Alone we can lift, but together we can transform lives"</h5></center></div>
+<div id="navbar">
+<div id="LogoContent">
+<a href="/"><div class="Logo"><img src="https://thumbs.dreamstime.com/b/helping-hands-care-hands-logo-318500757.jpg" alt="" id="logoimage" style="mix-blend-mode: multiply;"><h3 id="risetogether"><span style="color: rgb(241, 155, 63);">Rise</span><span style="color: rgb(86, 209, 86);">Together</span></h2></div></a>
+<div class="support"><a href="/life"><h2 id="navContent">Life</h2></a></div>
+<div class="aboutUs"><a href="/about"><h2 id="navContent">About Us</h2></a></div>
+<div class="NGO"><a ><h2 id="navContent">NGO's</h2></a></div>
+<div class="event"><a><h2 id="navContent">Events</h2></a></div>
+</div>
+<div>
+<div id="Login">
+<div class="joinUs" style="display: flex;"><h2 id="navContent"><a>Join Us</a></h2>/<a><h2 id="navContent">Login</h2></div>
+<div class="login"></div>
+</div>
+</div>
+</div>
+
+  <div class="nav-categories">
+    
+    <a href="/life"><button class="active"><i class="fas fa-bolt"></i> <br> Urgent</button></a>
+    <a href="/life/children"><button><i class="fas fa-child"></i><br> Children</button></a>
+    <a href="/life/elderly"><button><i class="fas fa-blind"></i><br> Elderly</button></a>
+    <a href="/life/hunger"> <button><i class="fas fa-utensils"></i><br> Hunger</button></a>
+    <a href="/life/specialy-abled"><button><i class="fa-solid fa-wheelchair"></i><br> Special-abled</button></a>
+  
+</div>
+
+
+  <div class="card-container">
+    <!-- Card 1 -->
+    <div class="donation-card">
+      <img src="https://static01.nyt.com/images/2010/04/13/world/13polio_CA0/13polio_CA0-articleLarge.jpg?quality=75&auto=webp&disable=upscale" alt="Card Image">
+      <!-- <div class="tag">Tax Benefit ✅</div> -->
+    <h5>This child is part of a critical Pulse Polio immunization drive. Your support helps ensure every child receives timely vaccines, protecting them from life-threatening diseases</h5>      
+      <div class="btn-group">
+        <button class="share-btn"><i class="fa-solid fa-share-from-square" style="color: #2d014e;"></i> Share</button>
+         <a href="Donation.html"><button class="donate-btn">Donate Now</button></a>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="donation-card">
+      <img src="https://im.indiatimes.in/content/2019/Jan/homeless_children_new_delhi_delhi_commission_for_protection_for_child_rights_dcpcr_government_1546417280_725x725.jpg" alt="Card Image">
+      <!-- <div class="tag">Tax Benefit ✅</div> -->
+<h5>These abandoned elderly women are struggling for basic necessities like food and shelter. Help bring dignity and care back into their lives with your donation.</h5>      <!-- <p>₹1,33,968 Raised • <b>86 Backers</b></p> -->
+      <div class="btn-group">
+        <button class="share-btn"><i class="fa-solid fa-share-from-square" style="color: #2d014e;"></i> Share</button>
+        <a href="Donation.html"><button class="donate-btn">Donate Now</button></a>
+      </div>
+    </div>
+    
+     <div class="donation-card">
+      <img src="https://www.smilefoundationindia.org/blog/wp-content/uploads/2022/11/152533069_4305230916167510_8344033647187796104_o-1-1024x768.jpg" alt="Card Image">
+      <!-- <div class="tag">Tax Benefit ✅</div> -->
+<h5>These young girls are eager to learn but lack access to proper schooling, uniforms, bags, and books. Your support can help them get the education they truly deserve.</h5>      
+      <div class="btn-group">
+        <button class="share-btn"><i class="fa-solid fa-share-from-square" style="color: #2d014e;"></i> Share</button>
+        <a href="Donation.html"><button class="donate-btn">Donate Now</button></a>
+      </div>
+    </div>
+
+    <!-- Add more cards here as needed -->
+  </div>
+  <br><br>
+  <div class="card-container">
+    <!-- Card 1 -->
+    <div class="donation-card">
+      <img src="https://d3aew4oo17ml6.cloudfront.net/images/photos/thumbnailfull/photos-2014-12-23-2-13-4.jpg?v=1.1.0" alt="Card Image" width="100%" height="180px">
+      <!-- <div class="tag">Tax Benefit ✅</div> -->
+<h5>This brave young boy is overcoming physical challenges. With your support, he can access the medical care and mobility support he needs to walk with confidence and live.</h5>      
+      <div class="btn-group">
+        <button class="share-btn"><i class="fa-solid fa-share-from-square" style="color: #2d014e;"></i> Share</button>
+         <a href="Donation.html"><button class="donate-btn">Donate Now</button></a>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="donation-card">
+      <img src="https://tse3.mm.bing.net/th/id/OIP._DsFhyr1dOSiFKE2mgxZtQHaE8?r=0&cb=thvnextc2&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Card Image">
+      <!-- <div class="tag">Tax Benefit ✅</div> -->
+<h5>This young girl lives in poverty and is in urgent need of shelter, education, and daily meals. Your kind contribution can help her live a safer, healthier, and more hopeful life..</h5>      
+      <div class="btn-group">
+        <button class="share-btn"><i class="fa-solid fa-share-from-square" style="color: #2d014e;"></i> Share</button>
+         <a href="Donation.html"><button class="donate-btn">Donate Now</button></a>
+      </div>
+    </div>
+    
+     <div class="donation-card">
+      <img src="https://2.bp.blogspot.com/-t2Z93Ieww9w/XG9EgmZgyXI/AAAAAAAAAA8/iIsWR0ecJxwEahGhk5W2BjB6HRX6LE_7wCLcBGAs/s1600/1588632871859.jpg" alt="Card Image">
+      <!-- <div class="tag">Tax Benefit ✅</div> -->
+<h5>These young boys dream of a better future but lack access to quality education and resources. Your donation can help provide proper education, school supplies, and a brighter.</h5>      
+      <div class="btn-group">
+        <button class="share-btn"><i class="fa-solid fa-share-from-square" style="color: #2d014e;"></i> Share</button>
+         <a href="Donation.html"><button class="donate-btn">Donate Now</button></a>
+      </div>
+    </div>
+
+    <!-- Add more cards here as needed -->
+  </div>
+  <br><br>
+  <div class="card-container">
+    <!-- Card 1 -->
+    <div class="donation-card">
+      <img src="https://worldofchildren.org/files/Disabilities_Page3.jpg" alt="Card Image">
+      <!-- <div class="tag">Tax Benefit ✅</div> -->
+      <h5>She lost both her legs, but not her determination. Your donation can help her get prosthetic limbs and the resources she needs to rebuild her life with strength and independence.</h5>
+      
+      <div class="btn-group">
+        <button class="share-btn"><i class="fa-solid fa-share-from-square" style="color: #2d014e;"></i> Share</button>
+         <a href="Donation.html"><button class="donate-btn">Donate Now</button></a>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="donation-card">
+      <img src="https://www.ft.com/__origami/service/image/v2/images/raw/http:%2F%2Fcom.ft.imagepublish.prod.s3.amazonaws.com%2F2a02b6d2-12ed-11e4-a6d4-00144feabdc0?fit=scale-down&source=next&width=700" alt="Card Image">
+      <!-- <div class="tag">Tax Benefit ✅</div> -->
+      <h5>He has been battling a facial deformity that causes both physical and emotional pain. Your support can help him receive the treatment he needs and live with dignity.</h5>
+      
+      <div class="btn-group">
+        <button class="share-btn"><i class="fa-solid fa-share-from-square" style="color: #2d014e;"></i> Share</button>
+         <a href="Donation.html"><button class="donate-btn">Donate Now</button></a>
+      </div>
+    </div>
+    
+     <div class="donation-card">
+      <img src="https://thumbs.dreamstime.com/b/portrait-unidentified-indian-poor-kid-girl-child-smiling-outddor-street-pondichery-puducherry-tamil-nadu-india-122846642.jpg" alt="Card Image">
+      <!-- <div class="tag">Tax Benefit ✅</div> -->
+      <h5>A man lies unconscious on a ventilator, relying on advanced medical support to survive. With your donation, we can ensure he receives continuous care and a chance at recovery.</h5>
+      
+      <div class="btn-group">
+        <button class="share-btn"><i class="fa-solid fa-share-from-square" style="color: #2d014e;"></i> Share</button>
+         <a href="Donation.html"><button class="donate-btn">Donate Now</button></a>
+      </div>
+    </div>
+
+    <!-- Add more cards here as needed -->
+  </div>
+
+</body>
+</html>

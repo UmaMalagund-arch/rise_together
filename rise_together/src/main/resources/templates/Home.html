@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>RiseTogether</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" href="../static/Home.css">
+<link rel="icon" type="image/jpg" href="https://thumbs.dreamstime.com/b/helping-hands-care-hands-logo-318500757.jpg">
+<!-- Bootstrap CSS & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="../templates/joinUs.html"></script>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  background-color: rgb(241, 245, 240);
+  
+}
+  /* ------nav bar----- */
+ #navbar{
+border:0px solid;
+height:54px;
+width:100%;
+display: flex;
+background-color: rgba(252, 250, 253, 0.242);
+align-items: center;
+justify-content: space-between;
+/* background-image: linear-gradient( orange); */
+color:rgb(45, 1, 78);
+position: sticky;
+top: 45px;
+z-index: 2000;
+} 
+#LogoContent{
+border:0px solid;
+height:60px;
+width:50%;
+display: flex;
+align-items: center;
+justify-content: space-around;
+}
+.Logo{
+border: 0px solid red;
+height: 53px;
+width: 150px;
+display: flex;
+mix-blend-mode: multiply;
+align-items: center;
+}
+#logoimage{
+  height: 53px;
+  width: 100px;
+  mix-blend-mode: multiply;
+}
+#Login{
+border:0px solid;
+height:60px;
+width:200px;
+display: flex;
+align-items: center;
+justify-content: space-around;
+position: relative;
+font-weight: bolder;
+font-size: larger;
+font-family: 'Times New Roman', Times, serif;
+}
+#navContent{
+font-size: larger;
+font-weight: bold;
+font-family: 'Times New Roman', Times, serif;
+}
+.joinus{
+  color: rgb(46, 3, 90);
+  text-decoration: none;
+  color: inherit;
+  
+} */
+
+/* ------carousel------- */
+#carousel{
+border:0px solid;
+height: 550px;
+width:100%;
+
+background-image: linear-gradient(rgba(255, 252, 252, 0.7),rgba(245, 243, 240, 0.8)),url("htttps://tse3.mm.bing.net/th/id/OIP.40jpXY0Ax1YlwVFIgX43dAHaEc?pid=Api&P=0&h=180");
+  background-repeat: no-repeat;
+background-size: 100% 100%;
+
+
+}
+
+.carousel-indicators [data-bs-target] {
+    background-color: rgb(252, 250, 250);
+    position: relative;
+    top: -20px;
+    
+ }
+.carousel-control-prev{
+position: relative;
+top: -300px;
+
+
+}
+.carousel-control-prev:hover{
+  background: none;
+}
+.carousel-control-next{
+position: relative;
+top: -350px;
+left:1150px;
+}
+.carousel-control-next:hover{
+  background: none;
+}
+
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    filter: brightness(1000); /* makes icon black */
+    background-size: 100% 100%;
+    width: 3rem;
+    height: 3rem;
+   
+  }
+
+.main{
+    border:0px solid red;
+    height: 550px;
+    width: 50%;
+    position: relative;
+   /* top: 40px; */
+    border-top-right-radius: 50%;
+    border-bottom-right-radius:50% ;
+    background-image: linear-gradient(white, rgb(45, 1, 78), rgb(45, 1, 78));
+}
+.inner{
+    border:0px solid rgb(234, 17, 17);
+    height: 550px;
+    width: 95%;
+    position: relative;
+    /* bottom: 40px; */
+    border-top-right-radius: 50%;
+    border-bottom-right-radius:50% ;
+    
+} 
+#image{
+  border:0px solid green;
+    height: 550px;
+    width: 100%;
+    position: relative;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius:50% ;
+    
+}
+.carousel-inner{
+  height: 100%;
+ }
+ #carouselExampleIndicators{
+  border: 0px solid red;
+  height: 580px;
+  /* background-image: ; */
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url("https://www.positivelynaperville.com/wp-content/uploads/2020/07/community-hands.jpg");
+  /* background-image: linear-gradient(to bottom,rgba(255, 255, 255, 0.627), rgba(232, 168, 78, 0.588)),url("https://www.positivelynaperville.com/wp-content/uploads/2020/07/community-hands.jpg");
+  */
+ }
+ 
+
+/* ------first Quotes------- */
+#Quotes{
+    border: 0px solid;
+    height: 45px;
+    width: 100%;
+    background-color:rgb(45, 1, 78);
+    position:sticky ;
+    top: 0;
+    z-index: 3000;
+}
+
+/* --carosel--- */
+ .QuotesContent{
+  border: 0px solid red;
+  height: 400px;
+  width: 450px;
+  position: relative;
+  top: -450px;
+  left: 62%;
+
+ }
+ .QuotesContentBeggers{
+   border: 0px solid red;
+  height: 400px;
+  width: 450px;
+  position: relative;
+  top: -450px;
+  left: 130%;
+ }
+ #textQuotes{
+  color: rgb(252, 250, 250);
+  font-family: 'Times New Roman', Times, serif;
+  
+ }
+ 
+ #donateButton{
+  height: 50px;
+  width: 200px;
+  border: none;
+  position: relative;
+  top: 80px;
+background-color:rgb(45, 1, 78);
+color: white;
+border-radius: 10px;
+font-size: large;
+ }
+#donateButton:hover{
+  background-color:rgb(77, 11, 127) ;
+}
+
+/* ------emergency-container */
+#emergencySticky{
+  border: 0px solid;
+  box-shadow: #8f41b6;
+  
+  border-radius: 10px;
+  height: 240px;
+  width: 44%;
+   position: relative;
+  top: -100px;
+  left: 420px; 
+  background-color: white;
+  /* position: sticky;
+  top: 108px;
+  z-index: 1000; */
+}
+#image-container{
+  border: 0px solid red;
+  height: 140px;
+  width: 30%;
+  border-radius: 50%;
+  position: relative;
+  top: 0px;
+}
+.carousel-emergency-images{
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+}
+#emergencySticky-image1{
+  height: 140px;
+  width: 100%;
+  border-radius: 50%;
+  /* mix-blend-mode: multiply;
+  background: transparent; */
+ 
+}
+.content-emergency{
+  border: 0px solid green;
+  height: 200px;
+  width: 390px;  
+  position: relative;
+  left: -40px;
+}
+.emergency-donate{
+height: 40px;
+width: 130px;
+border: none;
+border-radius: 10px;
+background-color:rgb(45, 1, 78);
+color: white;
+position: relative;
+top: 10px;
+}
+.emergency-donate:hover{
+  background-color: rgb(80, 17, 128);
+}
+
+/* ------footer----- */
+    .footer {
+      padding: 60px 20px 20px; 
+      background-color: rgba(217, 243, 214, 0.879);
+      font-family: Arial, sans-serif;
+      color: #070707;
+     
+    }
+    .footer input[type="email"] {
+      border: 1px solid rgb(89, 8, 124);
+      padding: 10px;
+      border-radius: 4px;
+      width: 330px;
+      max-width: 100%;
+    }
+
+    .footer .subscribe-btn {
+      background-color: rgb(45,1,78);
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      margin-left: 10px;
+      border-radius: 4px;
+    }
+.subscribe-btn:hover{
+  background-color: rgb(82, 19, 129);
+}
+    .footer .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .footer .logo span {
+      color: #6e0ba0;
+    }
+
+    .footer ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer ul li a {
+      text-decoration: none;
+      color: #3c3c3c;
+    }
+
+    .footer ul li a:hover {
+      text-decoration: underline;
+    }
+
+    .footer .social-icons i {
+      font-size: 20px;
+      margin-right: 10px;
+      padding: 10px;
+      background: #fff;
+      border-radius: 8px;
+      color: black;
+    }
+
+    .footer .metrics {
+      text-align: center;
+      margin: 40px 0;
+    }
+    .metrics{
+      position: relative;
+      left: 300px;
+      top: -110px;
+    }
+
+    .footer .metrics div {
+      display: inline-block;
+      margin: 0 30px;
+      font-weight: bold;
+    }
+
+    .footer .contact-icons i {
+      margin-right: 10px;
+      color: #333;
+    }
+
+    .footer-bottom {
+      background-color: #2e256f;
+      color: white;
+      padding: 10px 0px;
+      text-align: center;
+    }
+    
+
+    .footer-bottom a {
+      color: #fff;
+      margin: 0 10px;
+      text-decoration: underline;
+    }
+
+    .payment-logos img {
+      height: 25px;
+      margin-right: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .footer .metrics div {
+        display: block;
+        margin: 20px 0;
+      }
+
+      .footer .subscribe-btn {
+        margin: 10px 0 0 0;
+      }
+
+      .footer .payment-logos {
+        text-align: center;
+        margin-top: 20px;
+      }
+    }
+.row{
+   height: 260px;
+}
+
+/* -----register css----- */
+.content{
+  padding: 20px;
+  transition: filter 0.3s ease;
+}
+.blurred{
+  filter: blur(6px);
+}
+#joinUs{
+  margin-top: 200px;
+  margin-left: 35%;
+  position: fixed;
+  display: none;
+      position: fixed;
+      top: 0; left: 0;
+      z-index: 999;
+}
+#joinUs{
+            border: 0px solid ;
+            height: 200px;
+            width: 500px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background-color: rgba(83, 231, 46, 0.552);
+            
+        }
+        button{
+            height: 40px;
+            width: 150px;
+            background-color: rgba(45,1,78);
+            border: none;
+            color: white;
+            font-size: larger;
+        }
+        button:hover{
+            background-color: rgb(76, 18, 121);
+        }
+        h1{
+           font-family: 'Times New Roman', Times, serif;
+           position: relative;
+           top: -10px;
+        }
+.closeicon{
+  border: 1px solid white ;
+  height: 20px;
+  width: 20px;
+ background-color: rgb(251, 250, 250);
+  position: relative;
+  left: 239px;
+  top: -42px;
+}
+.closeicon:hover{
+  background-color: red;
+}
+#close{
+  color: rgb(5, 5, 5);
+  position: relative;
+  top: -5px;
+}
+#close:hover{
+  color: white;
+}
+a{
+  color: inherit;
+  text-decoration: none;
+}
+
+ body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      color: #000;
+    }
+
+    .container {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .heading {
+      font-size: 24px;
+      font-weight: 600;
+      border-left: 4px solid rgb(48,1,75);
+      padding-left: 10px;
+      display: inline-block;
+      margin-bottom: 30px;
+    }
+
+    .tabs {
+      margin-bottom: 30px;
+    }
+
+    .tab {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 0 5px;
+      font-weight: 600;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      color: #999;
+    }
+
+    .tab.active {
+      color: rgb(48,1,75);
+      border-color: rgb(48,1,75);
+    }
+
+    .steps {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .step {
+      background: #f9f9f9;
+      border-radius: 15px;
+      width: 220px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      position: relative;
+    }
+
+    .step img {
+      width: 100%;
+      max-height: 140px;
+      object-fit: contain;
+    }
+
+    .step h3 {
+      font-size: 16px;
+      margin: 15px 0 10px;
+      font-weight: 600;
+    }
+
+    .step p {
+      font-size: 13px;
+      color: #666;
+    }
+
+    .arrow {
+      align-self: center;
+      font-size: 24px;
+      color: rgb(48,1,75);
+    }
+
+    .img1 {
+      border-radius: 50%;
+      mix-blend-mode: multiply;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: flex;
+    }
+
+
+
+</style>
+</head>
+<body>
+  <div id="mainContainer">
+<div id="Quotes"><center><p style="color: white; letter-spacing: 1px; font-style: italic; word-spacing: 2px; position: relative; top: 7px; ">"Alone we can lift, but together we can transform lives"</h5></center></div>
+<div id="navbar">
+<div id="LogoContent">
+<div class="Logo"><img src="https://thumbs.dreamstime.com/b/helping-hands-care-hands-logo-318500757.jpg" alt="" id="logoimage" style="mix-blend-mode: multiply;"><h5 id="risetogether"><span style="color: rgb(241, 155, 63);">Rise</span><span style="color: rgb(86, 209, 86);">Together</span></h2></div>
+<div class="support"><a href="/life"><h2 id="navContent">Life</h2></a></div>
+<div class="aboutUs"><a href="/about"><h2 id="navContent">About Us</h2></a></div>
+<div class="NGO"><a><h2 id="navContent">NGO's</h2></a></div>
+<div class="event"><a><h2 id="navContent">Events</h2></a></div>
+</div>
+<div>
+<div id="Login">
+  <div class="joinUs" style="display: flex; gap: 12px; align-items: center;">
+    <a href="#" class="joinus" onclick="openJoinUs(event)">Join Us</a>
+    /
+    <a href="/login" class="joinus">Login</a>
+  </div>
+</div>
+
+</div>
+</div>
+<div id="carousel">
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1" ></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2" ></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+  <div class="main"> 
+  <div class="inner" id="Children">
+     <img src="https://borgenproject.org/wp-content/uploads/Cambodian-Street-Children.jpg"  alt="..." id="image">     
+  </div>
+      </div> 
+      <div class="QuotesContent">
+  <h1 id="textQuotes">"Let's build a world where every child is too busy dreaming to worry about surviving."</h1>
+<button id="donateButton">Donate Now</button>
+</div>   
+    </div>
+
+    <div class="carousel-item">
+       <div class="main"> 
+  <div class="inner" id="older">
+  <img src="../Images/Oldage2.jpg"  alt="..." id="image"> 
+</div>     
+  </div>
+  <div class="QuotesContent">
+   <h1 id="textQuotes">"No one was born to beg-every soul deserves dignity, every life deserves a chance."</h1>
+    <button id="donateButton">Donate Now</button>
+    </div>
+      </div>
+      
+    <div class="carousel-item">
+      <div class="main"> 
+  <div class="inner">
+    <img src="https://www.helpinghandsupport.org/assets/images/cases/case22.jpg"  alt="..." id="image">     
+  </div>
+      </div>
+      <div class="QuotesContent">
+<h1 id="textQuotes">"A Single step from you can bring someone back from the edge-act now."</h1>
+<button id="donateButton">Donate Now</button>
+</div>  
+    </div>
+
+    <div class="carousel-item">
+      <div class="main"> 
+  <div class="inner">
+    <img src="https://images.hindustantimes.com/rf/image_size_960x540/HT/p2/2018/03/06/Pictures/chandigarh-institute-registration-chandigarh-hindustan-students-technical_c59a97f8-213b-11e8-81db-e6399ce35310.jpg"  alt="..." id="image">  
+  </div>
+      </div>
+      <div class="QuotesContent">
+<h1 id="textQuotes">"Helping  the specially-abled isn't charity- it's humanity in action."</h1>
+<button id="donateButton">Donate Now</button>
+</div>
+    </div>
+    
+     </div>
+    
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next" >
+    <span class="carousel-control-next-icon" aria-hidden="true" ></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+</div>
+<!-- Emergenc-container -->
+<div id="emergencySticky">
+  <center><h5 style="padding-top: 2%; font-family: cursive; color: green;">Stand for someone today.</h5></center>
+<div class="container mt-5"id="courosel-emergency" >
+  <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="carousel-emergency-images">
+          <div id="image-container">
+          <img src="https://www.helpinghandsupport.org/assets/images/cases/case3.png" class="d-block w-100" alt="Image 1" id="emergencySticky-image1">
+        </div>
+         <div class="content-emergency">
+             <p style="font-weight: bold;">Ankit is 6 month baby is struggling  from some diseases . I we stand together we make him to lives.</p>
+             <button class="emergency-donate">Donate Now</button>
+         </div>
+        </div>
+        
+        </div>
+      <div class="carousel-item">
+        <div class="carousel-emergency-images">
+          <div id="image-container">
+          <img src="https://s.abcnews.com/images/Nightline/monroe-2-abc-er-190708_hpEmbed_3x4_992.jpg" class="d-block w-100" alt="Image 1" id="emergencySticky-image1">
+        </div>
+         <div class="content-emergency">
+             <p style="font-weight: bold;">Ankit is 6 month baby is struggling  from some diseases . If we stand together we make him to lives.</p>
+             <button class="emergency-donate">Donate Now</button>
+         </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="carousel-emergency-images">
+          <div id="image-container">
+          <img src="https://ichef.bbci.co.uk/news/976/cpsprodpb/328F/production/_89934921_89934920.jpg" class="d-block w-100" alt="Image 1" id="emergencySticky-image1">
+        </div>
+         <div class="content-emergency">
+             <p style="font-weight: bold;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum nisi veritatis perspiciatis nobis rem debitis modi </p>
+             <button class="emergency-donate">Donate Now</button>
+         </div>
+        </div>
+       </div>
+    </div>
+  </div>
+  
+</div>
+</div>
+
+<!-- For ngo -->
+ 
+   
+  <div class="container">
+    <div class="heading">How It Works?</div>
+
+    <div class="tabs">
+      <span class="tab active" onclick="showTab('donor')">For Donors</span>
+      <span class="tab" onclick="showTab('ngo')">For NGOs</span>
+    </div>
+
+    <!-- Donor Content -->
+    <div id="donor" class="tab-content active steps">
+      <div class="step">
+        <div class="img1">
+          <img src="https://sdmntprwestus3.oaiusercontent.com/files/00000000-7c30-61fd-a8c4-bebf392165a2/raw?se=2025-10-20T07%3A04%3A04Z&sp=r&sv=2024-08-04&sr=b&scid=2206802d-cf63-4918-ade8-90283ce4c01c&skoid=03727f49-62d3-42ac-8350-1c0e6559d238&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-10-19T22%3A02%3A56Z&ske=2025-10-20T22%3A02%3A56Z&sks=b&skv=2024-08-04&sig=08Ics7tCgr6i6E4M7ZM1yy6tWKuwebHq8LNETF5nnYM%3D" alt="Choose a Cause">
+        </div>
+        <h3>CHOOSE A CAUSE</h3>
+        <p>Browse different campaigns and select a cause.</p>
+      </div>
+
+      <div class="arrow">➡️</div>
+
+      <div class="step">
+        <div class="img1">
+          <img src="https://sdmntprcentralus.oaiusercontent.com/files/00000000-4b54-61f5-b84b-beb421860111/raw?se=2025-10-20T07%3A04%3A01Z&sp=r&sv=2024-08-04&sr=b&scid=fef3f86b-cd02-4393-88bb-6c716bb97647&skoid=03727f49-62d3-42ac-8350-1c0e6559d238&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-10-19T22%3A24%3A20Z&ske=2025-10-20T22%3A24%3A20Z&sks=b&skv=2024-08-04&sig=r6f5xX%2BoFTx/7cX4AW6Lr7gUxqniFgPmd5ZsEOBWlGM%3D" alt="Select Products">
+        </div>
+        <h3>MAKE A REPORT</h3>
+        <p>"Make a Report" allows users to view and track detailed updates on how their contributions were utilized by the organization.</p>
+      </div>
+
+      <div class="arrow">➡️</div>
+
+      <div class="step">
+        <img src="https://sdmntprwestcentralus.oaiusercontent.com/files/00000000-d0f8-61fb-ae6c-eab134ee5b86/raw?se=2025-10-20T07%3A04%3A01Z&sp=r&sv=2024-08-04&sr=b&scid=fef3f86b-cd02-4393-88bb-6c716bb97647&skoid=03727f49-62d3-42ac-8350-1c0e6559d238&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-10-19T22%3A24%3A45Z&ske=2025-10-20T22%3A24%3A45Z&sks=b&skv=2024-08-04&sig=3Ra2GYKQ%2B4SpjuBladDNPjXGmXfc/zmofL12dyCsjfc%3D" alt="Order Processing">
+        <h3>ORDER PROCESSING</h3>
+        <p>Checkout and pay for your contributions.</p>
+      </div>
+
+      <div class="arrow">➡️</div>
+
+      <div class="step">
+        <img src="https://sdmntprwestus3.oaiusercontent.com/files/00000000-89f8-61fd-be14-0988f962da92/raw?se=2025-10-20T07%3A04%3A01Z&sp=r&sv=2024-08-04&sr=b&scid=fef3f86b-cd02-4393-88bb-6c716bb97647&skoid=03727f49-62d3-42ac-8350-1c0e6559d238&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-10-19T22%3A23%3A09Z&ske=2025-10-20T22%3A23%3A09Z&sks=b&skv=2024-08-04&sig=GxMl0ocJaFt%2B4ECZ3xrf9Qo%2BrooroCZgiiJuEACm0Qg%3D" alt="Delivery Report">
+        <h3>DELIVERY REPORT</h3>
+        <p>Donatekart delivers the products and the organisation updates about product utilization.</p>
+      </div>
+    </div>
+
+    <!-- NGO Content -->
+    <div id="ngo" class="tab-content steps">
+      <div class="step">
+        <img src="https://sdmntpraustraliaeast.oaiusercontent.com/files/00000000-9d38-61fa-824e-09341abab9c3/raw?se=2025-10-20T07%3A04%3A01Z&sp=r&sv=2024-08-04&sr=b&scid=fef3f86b-cd02-4393-88bb-6c716bb97647&skoid=03727f49-62d3-42ac-8350-1c0e6559d238&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-10-19T22%3A24%3A04Z&ske=2025-10-20T22%3A24%3A04Z&sks=b&skv=2024-08-04&sig=W8rx9Nlz7Iu0yal/CLHA23VPZ3wSHoPVR4bSuj2HFzA%3D" alt="Fill the Form">
+        <h3>FILL THE FORM</h3>
+        <p>Fill <strong>Start A Campaign</strong> form and send us your requirement.</p>
+      </div>
+
+      <div class="arrow">➡️</div>
+
+      <div class="step">
+        <img src="https://sdmntprsouthcentralus.oaiusercontent.com/files/00000000-e390-61f7-9ddf-2cdfea601e60/raw?se=2025-10-20T07%3A04%3A01Z&sp=r&sv=2024-08-04&sr=b&scid=fef3f86b-cd02-4393-88bb-6c716bb97647&skoid=03727f49-62d3-42ac-8350-1c0e6559d238&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-10-19T21%3A40%3A29Z&ske=2025-10-20T21%3A40%3A29Z&sks=b&skv=2024-08-04&sig=u51HGtD3wL4ZT8BFfL1l6VqilYkFNr8YFwT1jggaA1Y%3D" alt="Get In Touch">
+        <h3>GET IN TOUCH</h3>
+        <p>Our campaign manager will reach out based on the enquiry.</p>
+      </div>
+
+      <div class="arrow">➡️</div>
+
+      <div class="step">
+        
+        <img src="https://sdmntprwestus2.oaiusercontent.com/files/00000000-7348-61f8-a671-94400b7770ff/raw?se=2025-10-20T07%3A04%3A01Z&sp=r&sv=2024-08-04&sr=b&scid=fef3f86b-cd02-4393-88bb-6c716bb97647&skoid=03727f49-62d3-42ac-8350-1c0e6559d238&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-10-19T22%3A25%3A25Z&ske=2025-10-20T22%3A25%3A25Z&sks=b&skv=2024-08-04&sig=4vc9NJ3d8/Y0MEdqiHVrWak2QwUo2UrYa9GMIGD20UE%3D" alt="Campaign Live">
+        <h3>CAMPAIGN IS LIVE</h3>
+        <p>Campaign goes live on Donatekart with content, images, and product.</p>
+      </div>
+
+      <div class="arrow">➡️</div>
+
+      <div class="step">
+        <img src="https://sdmntprwestus3.oaiusercontent.com/files/00000000-4ed4-61fd-b32e-bd2a3d1206e9/raw?se=2025-10-20T07%3A04%3A01Z&sp=r&sv=2024-08-04&sr=b&scid=fef3f86b-cd02-4393-88bb-6c716bb97647&skoid=03727f49-62d3-42ac-8350-1c0e6559d238&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-10-19T21%3A40%3A38Z&ske=2025-10-20T21%3A40%3A38Z&sks=b&skv=2024-08-04&sig=c9nHEpiKfxIWVM/c3BlDS0O5sgXJYr8eqHqXXpoIvFc%3D" alt="Campaign Updates">
+        <h3>CAMPAIGN UPDATES</h3>
+        <p>Donors are to be updated using photos/videos of the distribution drive of products to the needy.</p>
+      </div>
+    </div>
+  </div>
+
+  
+
+
+
+<!-- Footer Section -->
+<div id="footer-section">
+  <div class="footer">
+  <div class="container">
+
+    <!-- Subscribe -->
+    <div class="mb-4">
+      <h5 style="font-weight: bold;">Subscribe Us</h5>
+      <form class="d-flex flex-wrap">
+        <input type="email" placeholder="Email ID" required>
+        <button type="submit" class="subscribe-btn">Subscribe</button>
+      </form>
+    </div>
+
+    <!-- Metrics -->
+    <div class="metrics">
+      <div>
+        <i class="bi bi-cart4" style="font-size: 2cap; color: rgb(45,1,78);"></i><br>
+        ₹ 0+ Cr<br>Worth Donations
+      </div>
+      <div>
+        <i class="bi bi-people" style="font-size: 2cap; color: rgb(45,1,78);"></i><br>
+        0 Lakhs<br>Donor Transactions
+      </div>
+      <div>
+        <i class="bi bi-house-heart" style="font-size: 2cap; color: rgb(45,1,78);"></i><br>
+        0+<br>NGOs Impacted
+      </div>
+    </div>
+
+    <!-- Main Footer Row -->
+    <div class="row">
+
+      <!-- Logo & About style="position: relative; top: -80px;" -->
+      <div class="col-md-4 mb-4" style="position: relative; top: -100px;">
+        <div class="logo">
+          <img src="https://thumbs.dreamstime.com/b/helping-hands-care-hands-logo-318500757.jpg" alt="box" width="100px" style="mix-blend-mode: multiply;">
+          <span style="color: orange;">RISE</span><span style="color: rgb(12, 144, 12);">TOGETHER</span>
+        </div>
+        <p class="mt-2">
+          We are India's most trusted and transparent crowdfunding platform, with a vision to create a social impact.
+          Our unique model allows people from across the globe to donate towards raising funds for products required
+          by NGOs and charities in India, which are then delivered to them by us.
+        </p>
+        <div class="social-icons mt-3">
+          <i class="bi bi-facebook"></i>
+          <i class="bi bi-twitter"></i>
+          <i class="bi bi-instagram"></i>
+          <i class="bi bi-linkedin"></i>
+          <i class="bi bi-youtube"></i>
+        </div>
+      </div>
+
+      <!-- Discover -->
+      <div class="col-md-2 mb-4" style="position: relative; top: -0px; left: 250px;">
+        <h6 class="fw-bold">Discover</h6>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Start to support</a></li>
+          <li><a href="#">Donate Monthly</a></li>
+          <li><a href="#">Events</a></li>
+        </ul>
+      </div>
+
+      <!-- Learn -->
+      <div class="col-md-2 mb-4" style="position: relative; top: -0px; left: 250px;">
+        <h6 class="fw-bold">Learn</h6>
+        <ul>
+          <li><a href="#">How It Works</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Gift Cards</a></li>
+          <li><a href="#">Blogs</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="col-md-4 mb-4" style="position: relative; top: -0px; left: 250px;">
+        <h6 class="fw-bold">Contact Us</h6>
+        <p><i class="bi bi-geo-alt-fill contact-icons"></i> <strong>Office Address, India</strong><br>
+          6th block, Sector 6, Jspiders,<br>
+          Bangalore, Karnataka, 560010</p>
+        <p><i class="bi bi-telephone-fill contact-icons"></i> +91 8045685000</p>
+        <p><i class="bi bi-envelope-fill contact-icons"></i> info@risetogether.com</p>
+        <p><i class="bi bi-file-earmark-text-fill contact-icons"></i> <a href="#">Send Us An Inquiry</a></p>
+        <div class="payment-logos mt-2">
+          <img src="https://cdn-icons-png.flaticon.com/512/677/677667.png" alt="secure" title="Secure Payment">
+          <img src="https://img.icons8.com/color/48/visa.png" alt="Visa">
+          <img src="https://img.icons8.com/color/48/mastercard.png" alt="MasterCard">
+          <img src="https://img.icons8.com/color/48/paytm.png" alt="Paytm">
+          <img src="https://img.icons8.com/color/48/amex.png" alt="Amex">
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ---Bottom footer -->
+<div class="footer-bottom">
+  © 2025 RiseTogether | All rights reserved.
+  <a href="#">Terms of Use</a> |
+  <a href="#">Privacy Policy</a>
+
+</div>
+</div>
+
+</div>
+
+<!-- ---register join us -->
+ <div id="joinUs" class="content">
+  <div class="closeicon"><i class="fa-solid fa-xmark" onclick="closeJoinUs()" id="close"></i></div>
+    <h1>Register For</h1>
+    <div>
+      <a href="/userregister"><button>Donors</button></a>
+      <a href="/ngoregister"><button>NGO's</button></a>
+    </div>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  function openJoinUs(event){
+    event.preventDefault(); 
+    document.getElementById('joinUs').style.display='flex';
+    document.getElementById('mainContainer').classList.add('blurred');
+  }
+   function closeJoinUs(){
+    document.getElementById('joinUs').style.display='none';
+    document.getElementById('mainContainer').classList.remove('blurred');
+  }
+
+  function showTab(tabId) {
+      // Remove active class from tabs
+      const tabs = document.querySelectorAll('.tab');
+      tabs.forEach(tab => tab.classList.remove('active'));
+
+      // Hide all contents
+      const contents = document.querySelectorAll('.tab-content');
+      contents.forEach(content => content.classList.remove('active'));
+
+      // Show selected tab content
+      document.getElementById(tabId).classList.add('active');
+
+      // Activate clicked tab
+      const clickedTab = Array.from(tabs).find(tab => tab.textContent.includes(tabId === 'donor' ? 'Donors' : 'NGOs'));
+      if (clickedTab) clickedTab.classList.add('active');
+    }
+    
+
+</script>
+</body>
+</html>

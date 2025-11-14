@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rise Together - About Us</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        color: #000;
+    }
+
+    /* ===== Navbar ===== */
+     #navbar{
+border:0px solid;
+height:54px;
+width:100%;
+display: flex;
+background-color: rgba(252, 250, 253, 0.242);
+align-items: center;
+justify-content: space-between;
+/* background-image: linear-gradient( orange); */
+color:rgb(45, 1, 78);
+position: sticky;
+top: 40px;
+z-index: 2000;
+}
+#LogoContent{
+border:0px solid;
+height:60px;
+width:50%;
+display: flex;
+align-items: center;
+justify-content: space-around;
+}
+.Logo{
+  border: 0px solid red;
+height: 53px;
+width: 150px;
+display: flex;
+mix-blend-mode: multiply;
+align-items: center;
+}
+.Logo img{
+  height: 53px;
+  width: 100px;
+  mix-blend-mode: multiply;
+}
+#Login{
+border:0px solid;
+height:60px;
+width:200px;
+display: flex;
+align-items: center;
+justify-content: space-around;
+/*position: relative;
+left: 50px*/
+}
+#navContent{
+font-size: larger;
+font-weight: bold;
+font-family: 'Times New Roman', Times, serif;
+}
+.joinus{
+  color: rgb(46, 3, 90);
+  text-decoration: none;
+  color: inherit;
+}
+#Login a,#navContent {
+        text-decoration: none;
+        color: rgb(45, 1, 78);
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    #Quotes {
+        background-color: rgb(45, 1, 78);
+        color: white;
+        text-align: center;
+        padding: 10px;
+        font-style: italic;
+        font-size: 16px;
+        position: sticky;
+        top: 0;
+        z-index: 2000;
+    }
+
+    /* ===== Top Header Section ===== */
+    .about-section {
+        text-align: center;
+        padding: 50px 20px;
+    }
+
+    .about-section h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+    }
+
+    .about-section .subtitle {
+        font-size: 1.2rem;
+        color: #444;
+        margin-bottom: 20px;
+    }
+
+    .btn-join {
+        background-color: #f4511e;
+        color: white;
+        padding: 12px 25px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-size: 1rem;
+        display: inline-block;
+    }
+
+    .btn-join:hover {
+        background-color: #d63e15;
+    }
+
+    /* ===== Better Together Section ===== */
+    .better-together {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 60px 10%;
+        flex-wrap: wrap;
+        background: #fff;
+    }
+
+    .better-together .text-section {
+        flex: 1;
+        min-width: 300px;
+        padding-right: 20px;
+    }
+
+    .better-together h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    .better-together p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    .image-section {
+        flex: 1;
+        min-width: 300px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+    }
+
+    .yellow-box {
+        position: absolute;
+        top: 20px;
+        left: 20%;
+        width: 70%;
+        height: 250px;
+        background-color: #fddf8e;
+        border-radius: 15px;
+        z-index: 1;
+    }
+
+    .image-section img {
+        max-width: 400px;
+        width: 100%;
+        border-radius: 15px;
+        z-index: 2;
+        position: relative;
+    }
+
+    /* ===== Meet Rise Together Section ===== */
+    .meet-section {
+        background-color: #fde4e4;
+        max-width: 1100px;
+        margin: 50px auto;
+        padding: 40px;
+        border-radius: 20px;
+        text-align: center;
+    }
+
+    .meet-section h2 {
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+
+    .meet-section p {
+        font-size: 1.1rem;
+        color: #333;
+        line-height: 1.6;
+        margin-bottom: 25px;
+    }
+
+    /* Slider */
+    .slider {
+        position: relative;
+        overflow: hidden;
+        border-radius: 15px;
+        margin-bottom: 20px;
+    }
+
+    .slides {
+        display: flex;
+        width: 200%;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .slides img {
+        width: 50%;
+        height: 450px;
+        flex-shrink: 0;
+    }
+
+    .nav-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    .prev { left: 10px; }
+    .next { right: 10px; }
+
+    .dots {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .dot {
+        height: 10px;
+        width: 10px;
+        margin: 0 5px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .active-dot {
+        background-color: #008000;
+    }
+
+    .bottom-text {
+        text-align: center;
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    /* ===== About Rise Section ===== */
+    .about-rise {
+        max-width: 1100px;
+        margin: 50px auto;
+        padding: 20px;
+    }
+
+    .about-header h2 {
+        text-align: center;
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+    }
+
+    .about-header p {
+        text-align: center;
+        font-size: 1.1rem;
+        color: #555;
+        line-height: 1.6;
+        margin-bottom: 40px;
+    }
+
+    .about-image {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .about-image img {
+        max-width: 850px;
+        width: 100%;
+        border-radius: 12px;
+    }
+
+    .keys-container h3 {
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 1.8rem;
+    }
+
+    .keys-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .key-item {
+        background: #fafafa;
+        padding: 20px;
+        border-radius: 10px;
+        display: flex;
+        gap: 15px;
+        align-items: flex-start;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .icon {
+        font-size: 24px;
+        color: #6a0dad;
+    }
+
+    .key-item h4 {
+        margin: 0;
+        font-size: 1.2rem;
+    }
+
+    .key-item p {
+        margin: 5px 0 0;
+        color: #555;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .better-together {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .yellow-box {
+            left: 10%;
+            width: 80%;
+        }
+    }
+     /* logo */
+ .Logo{
+  border: 0px solid red;
+height: 53px;
+width: 150px;
+display: flex;
+mix-blend-mode: multiply;
+align-items: center;
+}
+#logoimage{
+  height: 50px;
+  width: 100px;
+  mix-blend-mode: multiply;
+}
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<div id="Quotes">"Alone we can lift, but together we can transform lives"</div>
+<div id="navbar">
+    <div id="LogoContent">
+        <a href="/" style="color: inherit; text-decoration: none;"><div class="Logo"><img src="https://thumbs.dreamstime.com/b/helping-hands-care-hands-logo-318500757.jpg" alt="" id="logoimage" style="mix-blend-mode: multiply;"><h3 id="risetogether"><span style="color: rgb(241, 155, 63);">Rise</span><span style="color: rgb(86, 209, 86);">Together</span></h2></div></a>
+        <a id="navContent" href="/life">Life</a>
+        <a id="navContent" href="/about">About Us</a>
+        <a id="navContent" href="#">NGO's</a>
+        <a id="navContent" href="#">Events</a>
+    </div>
+    <div id="Login">
+        <a href="/">Join Us</a>
+        <a href="/login">Login</a>
+    </div>
+</div>
+
+<!-- Header -->
+<div class="about-section">
+    <h1>We are RiseTogether</h1>
+    <p class="subtitle">Brilliant minds. Giving hearts.</p>
+    <a href="#" class="btn-join">Join Our Team</a>
+</div>
+
+<!-- Better Together -->
+<section class="better-together">
+    <div class="text-section">
+        <h2>Better Together</h2>
+        <p>At <strong>Rise Together</strong>, we believe in the power of unity to create lasting change.
+        Our mission is to bring people together to support education, healthcare, and essential resources
+        for those in need. Every small act of kindness adds up to make a huge difference.</p>
+        <p>We empower individuals and communities by connecting donors to genuine causes.
+        Together, we can uplift lives and build a future filled with hope, opportunities, and compassion.</p>
+    </div>
+    <div class="image-section">
+        <div class="yellow-box"></div>
+        <img src="https://img.freepik.com/premium-photo/group-girls-are-using-laptop-smiling_662214-110699.jpg" alt="Team Image">
+    </div>
+</section>
+
+<!-- Meet Section -->
+<section class="meet-section">
+    <h2>Meet Rise Together</h2>
+    <p>Rise Together is a community-driven platform dedicated to supporting people in need by connecting donors with impactful causes. Our mission is to empower individuals, uplift communities, and create opportunities through generosity and kindness.</p>
+
+    <div class="slider">
+        <div class="slides">
+            <img src="https://img.freepik.com/premium-photo/group-girls-are-using-laptop-smiling_662214-110699.jpg" alt="Team 1">
+            <img src="https://img.freepik.com/premium-photo/group-girls-are-using-laptop-smiling_662214-110699.jpg" alt="Team 2">
+            <img src="https://img.freepik.com/premium-photo/group-girls-are-using-laptop-smiling_662214-110699.jpg" alt="Team 3">
+        </div>
+        <button class="nav-btn prev">&#10094;</button>
+        <button class="nav-btn next">&#10095;</button>
+    </div>
+
+    <div class="dots">
+        <span class="dot active-dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+
+    <div class="bottom-text">
+        <p>We believe that every contribution, no matter how small, can make a big difference. From providing food and education to supporting health and emergency needs, Rise Together ensures that your help reaches those who need it most.</p>
+        <p>Our platform brings together donors and nonprofits to create real impact. We are committed to transparency, trust, and accountability, so you can give with confidence knowing your donations are changing lives.</p>
+        <p>Join us in our mission to spread kindness and empower communities. Together, we can rise above challenges and build a better tomorrow.</p>
+    </div>
+</section>
+
+<!-- About Rise -->
+<section class="about-rise">
+    <div class="about-header">
+        <h2>We were built for every good cause and welcome people of all backgrounds and cultures who share our desire to do more good.</h2>
+        <p>Every day, we commit to fostering an inclusive community where everyone who shares a heart for generosity is valued. This begins with us, a team of widely diverse individuals, plus a culture where winning means we all belong.</p>
+    </div>
+    <div class="about-image">
+        <img src="https://www.givelify.com/wp-content/uploads/2021/09/AboutUs-Careers_AboveFourKeys.jpg" alt="Rise Together Kids">
+    </div>
+    <div class="keys-container">
+        <h3>Our four keys to success</h3>
+        <div class="keys-grid">
+            <div class="key-item"><div class="icon">✔</div><div><h4>Integrity: Make it right.</h4><p>We assess systems to earn trust by protecting assets.</p></div></div>
+            <div class="key-item"><div class="icon">✔</div><div><h4>Heart: Make it meaningful.</h4><p>We collaborate to serve people’s desire to do good.</p></div></div>
+            <div class="key-item"><div class="icon">✔</div><div><h4>Simplicity: Make it clear.</h4><p>We create experiences that are simple and joyful.</p></div></div>
+            <div class="key-item"><div class="icon">✔</div><div><h4>Wow: Make it wonderful.</h4><p>We find ways to inspire and delight our community.</p></div></div>
+        </div>
+    </div>
+</section>
+
+<script>
+const slides = document.querySelector('.slides');
+const dots = document.querySelectorAll('.dot');
+let index = 0;
+
+document.querySelector('.next').addEventListener('click', () => {
+    index = (index + 1) % 3;
+    updateSlider();
+});
+
+document.querySelector('.prev').addEventListener('click', () => {
+    index = (index - 1 + 3) % 3;
+    updateSlider();
+});
+
+dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+        index = i;
+        updateSlider();
+    });
+});
+
+function updateSlider() {
+    slides.style.transform = `translateX(-${index * 100}%)`;
+    dots.forEach(dot => dot.classList.remove('active-dot'));
+    dots[index].classList.add('active-dot');
+}
+</script>
+
+</body>
+</html>

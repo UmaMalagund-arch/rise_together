@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Person</title>
+    <style>
+        * { 
+            margin: 0; padding: 0; box-sizing: border-box;
+         }
+        body{
+        height: 100vh;
+        }
+
+        .dashboard { 
+            display: flex;
+            /* min-height: 100vh; */
+        }
+
+        .sidebar {
+            width: 260px;
+            background-color: rgb(48,1,75);
+            color: white;
+            padding: 20px;
+            box-shadow: 4px 0 8px rgba(0, 0, 0, 0.1);
+        }
+        .sidebar h2 { font-size: 20px; margin-bottom: 20px; text-align: center; }
+        .sidebar a { display: block; padding: 12px 0; text-decoration: none; color: white; }
+        .sidebar a:hover { background-color: #1b263b; border-radius: 6px; }
+
+        .add-person-form {
+            display: flex; flex-direction: column; gap: 15px;
+            padding: 30px; background: linear-gradient(to right, #f4e8d9, #fff);
+            border-radius: 15px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 500px; margin: auto; font-family: 'Segoe UI', sans-serif;
+        }
+        .add-person-form label { font-weight: 600; color: #1b263b; }
+        .add-person-form input, .add-person-form select {
+            padding: 10px; border-radius: 8px; border: 1px solid #ccc;
+            font-size: 15px; background-color: #fdfdfd;
+        }
+        .add-person-form button {
+            background-color: #1b263b; color: white; padding: 12px; font-size: 16px;
+            border: none; border-radius: 10px; cursor: pointer;
+        }
+        .add-person-form button:hover { background-color: #37156c; transform: scale(1.03); }
+        .error { color: red; }
+
+        /* Dropdown */
+        .dropdown-container { position: relative; width: 100%; }
+        .dropdown-selected {
+            border: 1px solid #ccc; padding: 8px; background: #fff; cursor: pointer;
+        }
+        .dropdown-list {
+            position: absolute; border: 1px solid #ccc; background: #fff;
+            max-height: 150px; overflow-y: auto; width: 100%;
+            display: none; z-index: 1000;
+        }
+        .dropdown-list input {
+            width: 95%; padding: 5px; margin: 5px; border: 1px solid #ccc;
+        }
+        .dropdown-item { padding: 8px; cursor: pointer;}
+        .dropdown-item:hover { background: #f0f0f0;}
+    </style>
+</head>
+<body>
+<div class="dashboard">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>User Panel</h2>
+        <a th:href="@{/user/home/userPage}">👤 Profile</a>
+        <a th:href="@{/user/home/notification}">🔔 Notifications</a>
+        <a th:href="@{/user/home/addPeople}">➕ Report People</a>
+        <a th:href="@{/user/home/trackApplication}">📊 Track Application</a>
+        <a th:href="@{/user/home/rewards}">🎁 Rewards</a>
+        <p id="logout" style="cursor:pointer;">🚪 Logout</p>
+    </div>
+
+    <!-- Report People Form -->
+    <div class="ReportPeople" style="flex:1; display:flex; justify-content:center; align-items:center;">
+        <form class="add-person-form" th:action="@{/user/home/addPeople}" th:object="${reportPersondto}" method="post" enctype="multipart/form-data">
+            <h2>👥 Report Person to NGO</h2>
+
+            <label for="name">Name:</label>
+            <input type="number" id="mobile" placeholder="Enter your number" th:field="*{mobile}"/>
+            <span class="error" th:if="${#fields.hasErrors('mobile')}" th:errors="*{mobile}"></span>
+
+            <label for="name">Name:</label>
+            <input type="text" id="name" placeholder="Enter person  name" th:field="*{name}"/>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" placeholder="Enter Person age" th:field="*{age}"/>
+            <span class="error" th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></span>
+
+            <label for="category">Category:</label>
+            <select id="category" th:field="*{category}">
+                <option value="" disabled selected>Select category</option>
+                <option value="Emergency">Emergency</option>
+                <option value="Children">Children</option>
+                <option value="Elderly">Elderly</option>
+                <option value="Hunger">Hunger</option>
+                <option value="Special Abled">Special Abled</option>
+            </select>
+
+            <label for="location">Location:</label>
+            <input type="text" id="location" placeholder="Enter location" th:field="*{location}"/>
+             <span class="error" th:if="${#fields.hasErrors('location')}" th:errors="*{location}"></span>
+            
+            <label for="ngo">NGO</label>
+            <div class="dropdown-container">
+                <div class="dropdown-selected">-- Select NGO --</div>
+                <div class="dropdown-list">
+                    <input type="text" placeholder="Search NGO or Location...">
+                    <div th:each="ngo : ${ngos}"
+                         class="dropdown-item"
+                         th:data-value="${ngo.id}"
+                         th:data-search="${ngo.name + ' ' + ngo.address}"
+                         th:text="${ngo.name + ' (' + ngo.address + ')'}">
+                    </div>
+                </div>
+                <input type="hidden" name="ngoId" id="selectedNgo" th:field="*{ngoId}">
+            </div>
+            <span class="error" th:if="${#fields.hasErrors('ngoId')}" th:errors="*{ngoId}"></span>
+
+            <label for="image">Upload Image:</label>
+            <input type="file" id="image" th:field="*{image}" accept=".jpg,.jpeg,.png"/>
+            <span class="error" th:if="${#fields.hasErrors('image')}" th:errors="*{image}"></span>
+
+            <button type="submit">➕ Report Person</button>
+        </form>
+    </div>
+</div>
+
+<!-- JS should be at end so it runs after Thymeleaf renders -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // Logout fix
+    const logoutBtn = document.getElementById("logout");
+    if (logoutBtn) {
+        logoutBtn.addEventListener("click", () => {
+            if (confirm("Are you sure you want to logout?")) {
+                alert("✅ You have been logged out successfully.");
+                window.location.href = "/"; // redirect to homepage
+            }
+        });
+    }
+
+    const selected = document.querySelector(".dropdown-selected");
+    const list = document.querySelector(".dropdown-list");
+    const searchInput = list.querySelector("input");
+    const hiddenInput = document.getElementById("selectedNgo");
+
+    // Open dropdown
+    selected.addEventListener("click", () => {
+        list.style.display = list.style.display === "block" ? "none" : "block";
+        searchInput.focus();
+    });
+
+    // Use event delegation for dropdown items
+    list.addEventListener("click", (e) => {
+        if (e.target.classList.contains("dropdown-item")) {
+            selected.textContent = e.target.textContent;
+            hiddenInput.value = e.target.dataset.value;
+            list.style.display = "none";
+        }
+    });
+
+    // Search filter
+    // Search filter
+searchInput.addEventListener("keyup", () => {
+    let filter = searchInput.value.toLowerCase();
+    let items = list.querySelectorAll(".dropdown-item");
+    let anyVisible = false;
+
+    items.forEach(item => {
+        let text = item.dataset.search.toLowerCase();
+        if (text.includes(filter)) {
+            item.style.display = "";
+            anyVisible = true;
+        } else {
+            item.style.display = "none";
+        }
+    });
+
+    // Show "Not Found" if no items match
+    let notFound = list.querySelector(".not-found");
+    if (!anyVisible) {
+        if (!notFound) {
+            notFound = document.createElement("div");
+            notFound.className = "not-found";
+            notFound.textContent = "❌ No results found";
+            notFound.style.padding = "8px";
+            notFound.style.color = "red";
+            list.appendChild(notFound);
+        }
+    } else {
+        if (notFound) {
+            notFound.remove();
+        }
+    }
+});
+
+    // Close when clicking outside
+    document.addEventListener("click", (e) => {
+        if (!e.target.closest(".dropdown-container")) {
+            list.style.display = "none";
+        }
+    });
+});
+</script>
+</body>
+</html>

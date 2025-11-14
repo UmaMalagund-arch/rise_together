@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NGO Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #e0f7fa, #ffffff);
+}
+
+
+.dashboard {
+  display: flex;
+  min-height: 100vh;
+}
+
+
+.sidebar {
+  width: 270px;
+  background-color: #1b263b;
+  color: white;
+  padding: 20px;
+  box-shadow: 4px 0 8px rgba(0, 0, 0, 0.1);
+} 
+
+.sidebar h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar ul li {
+  padding: 12px 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.sidebar ul li i {
+  margin-right: 10px;
+}
+
+.sidebar ul li:hover {
+  background-color: #1b263b;
+  border-radius: 6px;
+}
+
+
+.main-content {
+  flex: 1;
+  padding: 50px;
+  background: url("https://www.transparenttextures.com/patterns/cubes.png");
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.profile-card {
+  background: linear-gradient(to right, #e0f7fa, #fff);
+  padding: 30px 40px;
+  border-radius: 20px;
+  width: 700px;
+  height: 400px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.profile-card h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color:#2c3e50;
+}
+
+.profile-section {
+  display: flex;
+  align-items: center;
+  gap: 75px;
+}
+
+.profile-image img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid #1b263b;
+  object-fit: cover;
+  position: relative;
+  bottom: 40px;
+}
+
+.upload-icon {
+  position: absolute;
+  bottom: 295px;
+  right: 790px;
+  background-color: #fff;
+  border-radius: 50%;
+  padding: 5px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.bio-section {
+  flex: 1;
+}
+
+.bio-section label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.bio-section textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  resize: none;
+}
+
+.bio-section button {
+  margin-top: 10px;
+  background-color: #2c3e50;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.bio-section button:hover {
+  background-color:#1b263b;
+}
+
+.icon {
+  color: #4CAF50;
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+
+
+.section {
+  display: none;
+}
+
+.section.active {
+  display: block;
+}
+button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #004aad;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Notification Section Styles */
+/* Notification Section Styling */
+#notification-box {
+  background: linear-gradient(to right, #e0f7fa, #fff);
+  border-radius: 15px;
+  padding: 30px;
+  max-width: 800px;
+  width: 100%;
+  margin: auto;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+#notification-box h2 {
+  text-align: center;
+  color: #1b263b;
+  font-size: 26px;
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.notification-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.notification-list li {
+  background-color: #ffffff;
+  border-left: 6px solid #1b263b;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.notification-list li:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  background-color: #f7fbff;
+}
+
+.notification-list strong {
+  color: #004aad;
+  font-size: 17px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Add People Form Styling */
+.add-person-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 30px;
+  background: linear-gradient(to right, #e0f7fa, #fff);
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 500px;
+  margin: auto;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.add-person-form label {
+  font-weight: 600;
+  color: #1b263b;
+}
+
+.add-person-form input[type="text"],
+.add-person-form input[type="number"],
+.add-person-form input[type="file"],
+.add-person-form select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 15px;
+  background-color: #fdfdfd;
+  transition: border 0.3s;
+}
+
+.add-person-form input:focus,
+.add-person-form select:focus {
+  border-color: #0077cc;
+}
+
+.add-person-form button {
+  background-color: #1b263b;
+  color: white;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.add-person-form button:hover {
+  background-color: #004aad;
+  transform: scale(1.03);
+}
+
+#add-people-form h2 {
+  text-align: center;
+  color:#1b263b;
+  margin-bottom: 20px;
+}
+
+
+/* Track Application Styling */
+#track-box {
+  background: linear-gradient(to right, #e0f7fa, #fff);
+  border-radius: 15px;
+  padding: 30px;
+  max-width: 700px;
+  margin: auto;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  font-family: 'Segoe UI', sans-serif;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+#track-box h2 {
+  color: #1b263b;
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 24px;
+}
+
+.track-card {
+  border-left: 6px solid #1b263b;
+  background-color: #f9f9f9;
+  padding: 20px 25px;
+  border-radius: 10px;
+  margin-top: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+
+.track-card:hover {
+  background-color: #f1f6fa;
+  transform: translateY(-3px);
+}
+
+.track-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.track-header .status {
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: 600;
+}
+
+.status.approved {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status.pending {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.status.rejected {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+
+.progress-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0;
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.progress-step {
+  flex: 1;
+  text-align: center;
+  font-size: 14px;
+  color: #aaa;
+  position: relative;
+}
+
+.progress-step::before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  display: block;
+  margin: 0 auto 10px;
+  border-radius: 50%;
+  background-color: #ddd;
+  border: 2px solid #ccc;
+  transition: background-color 0.3s;
+}
+
+.progress-step.completed::before {
+  background-color: #4caf50;
+  border-color: #4caf50;
+}
+
+.progress-step.current::before {
+  background-color: #1b263b;
+  border-color: #1b263b;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.6; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.application-timeline {
+  font-size: 14px;
+  color: #333;
+  padding-left: 10px;
+  margin-top: 20px;
+}
+
+.application-timeline .dot {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.dot.approved {
+  background-color: #4caf50;
+}
+
+.dot.current {
+  background-color: #1b263b;
+}
+
+.download-btn {
+  margin-top: 20px;
+  background-color: #1b263b;
+  color: #fff;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+  position: relative;
+  left: 200px;
+}
+
+.download-btn:hover {
+  background-color: #2c3e50;
+}
+
+#rewards-box {
+  background: linear-gradient(to right, #e0f7fa, #fff);
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 800px;
+  margin: auto;
+  font-family: 'Segoe UI', sans-serif;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+#rewards-box h2 {
+  text-align: center;
+  color: #1b263b;
+  font-size: 26px;
+  margin-bottom: 25px;
+}
+
+.reward-card {
+  background-color: #ffffff;
+  border-left: 6px solid #1b263b;
+  margin-bottom: 20px;
+  padding: 20px 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.reward-card:hover {
+  transform: scale(1.02);
+  background-color: #f8fbff;
+}
+
+.reward-card h3 {
+  color: #1b263b;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.reward-card p {
+  color: #333;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.reward-badge {
+  display: inline-block;
+  background-color: #1b263b;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.claim-reward {
+  margin-top: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #1b263b;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.claim-reward:hover {
+  background-color: #2c3e50;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+<body>
+  <div class="dashboard">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <br>
+      <h2 style="font-size: x-larger;">User Panel</h2>
+      <ul>
+        <li id="profile-link"> 👤 Profile</li>
+        <li id="notifications"> 🔔 Notifications</li>
+        <li id="add-people"> ➕ Add People</li>
+        <li id="track"> 📊 Track Application</li>
+        <li id="rewards"> 🎁 Rewards</li>
+        <li id="logout"> 🚪 Logout</li>
+      </ul>
+    </div>
+
+    <!-- profile -->
+    
+    <div class="main-content">
+
+  <!-- Profile section wrapped properly -->
+  <div id="profile-section" class="section-box">
+    <div class="profile-card">
+      <h1>Hello, <span>User Name 👋</span></h1>
+      <br><br>
+      <div class="profile-section">
+        <div class="profile-image">
+          <img src="C:\Users\raksh\Desktop\mepic.jpeg" alt="Profile Image" id="profile-img"/>
+          <label for="profile-upload" class="upload-icon">📷</label>
+          <input type="file" id="profile-upload" accept="image/*" style="display: none;">
+        </div>
+        <div class="bio-section">
+          <p><i class="fas fa-user-circle icon"></i> <strong>About:</strong> NGO Volunteer from Karnataka</p>
+          <br>
+          <p><i class="fas fa-phone icon"></i> <strong>Phone:</strong> +91 9876543210</p>
+          <br>
+          <p><i class="fas fa-envelope icon"></i> <strong>Email:</strong> rakshita@gmail.com</p>
+          <br /><br>
+          <button>Edit / Manage Profile</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notifications box -->
+  
+  <div id="notification-box" class="section-box" style="display: none;">
+  <h2>📢 NGO Notifications</h2>
+  <ul class="notification-list">
+    <li>
+      <strong>[Urgent]</strong> Flood Relief Needed in Bihar – Volunteers and donations required.  
+      <br><br>
+      📅 <strong>Date:</strong> 10th August 2025  
+      <br>
+      📍 <strong>Location:</strong> Patna, Bihar  
+      <br>
+      🕒 <strong>Time:</strong> 9:00 AM onwards  
+      <br><br>
+      👉 Register by <strong>7th August</strong> through the volunteer portal.
+    </li>
+
+    <li>
+      <strong>[Awareness Drive]</strong> Nutrition for Underprivileged Children – Join our campaign to educate and support health in schools.  
+      <br><br>
+      📅 <strong>Date:</strong> 14th August 2025  
+      <br>
+      📍 <strong>Location:</strong> Government School, Shivajinagar, Bengaluru  
+      <br>
+      🕒 <strong>Time:</strong> 10:30 AM – 1:00 PM  
+      <br><br>
+      🎁 Volunteers will receive a certificate of appreciation.  
+    </li>
+
+    <li>
+      <strong>[Medical Camp]</strong> Free Health Checkup for Senior Citizens – Help us organize a camp for underprivileged elders.  
+      <br><br>
+      📅 <strong>Date:</strong> 17th August 2025  
+      <br>
+      📍 <strong>Location:</strong> NGO Community Center, Mysuru  
+      <br>
+      🕒 <strong>Time:</strong> 8:00 AM – 12:00 PM  
+      <br><br>
+      🩺 Doctors, nurses, and student volunteers are welcome to register.
+    </li>
+
+    <li>
+      <strong>[Green Initiative]</strong> Tree Plantation Drive in Bengaluru – Join us in making the city greener. 🌱  
+      <br><br>
+      📅 <strong>Date:</strong> 20th August 2025  
+      <br>
+      📍 <strong>Location:</strong> Nandini Layout Park, Bengaluru  
+      <br>
+      🕒 <strong>Time:</strong> 7:30 AM – 10:30 AM  
+      <br><br>
+      🌍 Open to all ages. Tools and saplings will be provided.
+    </li>
+
+    <li>
+      <strong>[Blood Donation]</strong> Donate Blood, Save Lives – Critical shortage of blood units in local hospitals.  
+      <br><br>
+      📅 <strong>Date:</strong> 22nd August 2025  
+      <br>
+      📍 <strong>Location:</strong> Red Cross Blood Bank, Hubli  
+      <br>
+      🕒 <strong>Time:</strong> 9:00 AM – 2:00 PM  
+      <br><br>
+      ❤️ Snacks & certificates will be provided to all donors.
+    </li>
+  </ul>
+  </div>
+
+
+
+  <!-- Add People Section -->
+  <div id="add-people-form" class="section-box" style="display: none;">
+  <h2>👥 Add Person to NGO Record</h2>
+  <form class="add-person-form">
+    <label for="name">Name:</label>
+    <input type="text" id="name" placeholder="Enter full name" required />
+
+    <label for="age">Age:</label>
+    <input type="number" id="age" placeholder="Enter age" required />
+
+    <label for="category">Category:</label>
+    <select id="category" required>
+      <option disabled selected>Select category</option>
+      <option>Emergency</option>
+      <option>Children</option>
+      <option>Elderly</option>
+      <option>Hunger</option>
+      <option>Special Abled</option>
+    </select>
+
+    <label for="location">Location:</label>
+    <input type="text" id="location" placeholder="Enter location" required />
+
+    <label for="image">Upload Image:</label>
+    <input type="file" id="image" accept="image/*" />
+
+    <button type="submit">➕ Add Person</button>
+  </form>
+  </div>
+  
+  
+  <div id="track-box" class="section-box" style="display: none;">
+  <h2>📊 Track Your Applications</h2>
+  <div class="progress-container">
+  <div class="progress-step completed">Submitted</div>
+  <div class="progress-step completed">Verified</div>
+  <div class="progress-step current">Under Review</div>
+  <div class="progress-step">Approved</div>
+  <div class="progress-step">Completed</div>
+  </div>
+  
+  <div class="application-timeline">
+  <p><span class="dot approved"></span> Application submitted on 28th July</p>
+  <p><span class="dot approved"></span> Documents verified on 30th July</p>
+  <p><span class="dot current"></span> Under review by regional officer</p>
+  </div>
+  <br>
+  <div class="track-card">
+    <div class="track-header">
+      <strong>Application ID:</strong> NGO2025-1034  
+      <span class="status approved">✅ Approved</span>
+    </div>
+    <p><strong>Name:</strong> Rakshita Ambiger</p>
+    <p><strong>Category:</strong> Special Abled Assistance</p>
+    <p><strong>Submitted On:</strong> 28th July 2025</p>
+    <p><strong>Remarks:</strong> Documents verified. Support will be provided within 5 working days.</p>
+  </div>
+  <button onclick="window.print()" class="download-btn">🖨️ Print / Save Application</button>
+
+  </div>
+  
+  <div id="rewards-box" class="section-box" style="display: none;">
+  <h2>🎁 Your Rewards</h2>
+
+  <div class="reward-card">
+    <h3>🌟 Star Volunteer</h3>
+    <p>Awarded for completing 10+ successful volunteer sessions.</p>
+    <span class="reward-badge">Badge Earned</span>
+  </div>
+
+  <div class="reward-card">
+    <h3>💖 Consistent Donor</h3>
+    <p>You've donated to causes 5 months in a row. Thank you for your dedication!</p>
+    <span class="reward-badge">₹500 Voucher</span>
+  </div>
+
+  <div class="reward-card">
+    <h3>🚀 Early Supporter</h3>
+    <p>You've been with our NGO since its early days. Your journey inspires others.</p>
+    <span class="reward-badge">Recognition Certificate</span>
+  </div>
+
+  <button class="claim-reward">🎉 Claim Latest Rewards</button>
+</div>
+
+</div>
+
+  
+  <!-- JS file included at the end -->
+  <script>
+    window.onload = function () {
+  const profileLink = document.getElementById("profile-link");
+  const profileSection = document.getElementById("profile-section");
+
+  if (profileLink && profileSection) {
+    profileLink.addEventListener("click", function (e) {
+      e.preventDefault();
+      hideAllSections();
+      profileSection.style.display = "block";
+    });
+  }
+
+  document.getElementById("add-people").onclick = () => {
+  hideAllSections();
+  document.getElementById("add-people-form").style.display = "block";
+  };
+
+}
+
+document.getElementById("notifications").onclick = () => {
+  hideAllSections();
+  document.getElementById("notification-box").style.display = "block";
+};
+function hideAllSections() {
+  const sections = document.querySelectorAll(".section-box");
+  sections.forEach(sec => sec.style.display = "none");
+}
+
+document.getElementById("track").onclick = () => {
+  hideAllSections();
+  document.getElementById("track-box").style.display = "block";
+};
+
+document.getElementById("rewards").onclick = () => {
+  hideAllSections();
+  document.getElementById("rewards-box").style.display = "block";
+};
+
+document.getElementById("logout").onclick = () => {
+  const confirmLogout = confirm("Are you sure you want to logout?");
+  if (confirmLogout) {
+    alert("✅ You have been logged out successfully.");
+    window.location.href = "home.html"; // Change this to your actual homepage path if needed
+  }
+};
+  </script>
+</body>
+</html>

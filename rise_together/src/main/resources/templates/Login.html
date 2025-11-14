@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NGO Login</title>
+  <link rel="stylesheet" th:href="@{/css/quotes.css}">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      /* display: flex;
+      justify-content: center;
+      align-items: center; */
+      height: 100vh;
+    }
+    .main-container{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      top: 100px;
+    }
+
+    .login-container {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      width: 30%;
+      padding: 12px;
+      margin-top: 25px;
+      background-color:rgb(45,1,78);
+      border: none;
+      color: #fff;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      position: relative;
+      left: 36%;
+    }
+
+    button:hover {
+      background-color: #500672;
+    }
+
+    .extra {
+      margin-top: 15px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .extra a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .extra a:hover {
+      text-decoration: underline;
+    }
+    .wave-inside {
+      width: 100%;
+      height: 110px;
+      background-image: linear-gradient(rgb(45, 1, 78), rgb(250, 249, 249));
+      position: relative;
+    }
+
+    .wave-inside::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 110px;
+      background: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1440 320' xmlns='http://www.w3.org/2000/svg'><path fill='%23ffffff' d='M0,224L48,202.7C96,181,192,139,288,112C384,85,480,75,576,85.3C672,96,768,128,864,138.7C960,149,1056,139,1152,122.7C1248,107,1344,85,1392,74.7L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'/></svg>") no-repeat bottom;
+      background-size: cover;
+    }
+   .p{
+    color: black;
+   }
+    
+  </style>
+</head>
+<body>
+<div th:replace="~{fragments/quotes :: quotes}"></div>
+
+<div class="main-container">
+  <div class="login-container">
+    <div class="wave-inside"></div>
+  <h2 style="color: rgb(45,1,78);">Login</h2>
+  <form action="/login" method="post">
+    <label for="username">Mobile no/Email:</label>
+    <input type="text" id="username" name="user">
+
+    <label for="password">Password/Register Number:</label>
+    <input type="password" id="password" name="password">
+
+    <a href="/ngoListpage"><button type="submit">Login</button></a>
+
+    <div class="extra">
+      <p class="p">Forgot your password? <a href="#">Reset here</a></p>
+      <p class="p">Don't have an account? <a href="/joinUs">Register now</a></p>
+    </div>
+  </form>
+</div>
+</div>
+
+</body>
+</html>

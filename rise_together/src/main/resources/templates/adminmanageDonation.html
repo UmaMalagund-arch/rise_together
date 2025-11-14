@@ -1,0 +1,157 @@
+Managedonation.html                                                                                                                                                                                                                                                                          <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* === FUND PAYMENTS SECTION === */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background-color: #f8f9fc;
+    }
+
+    .navPanel {
+      width: 240px;
+      background-color: rgb(48,1,75);
+      color: white;
+      padding: 25px 20px;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+
+    .navPanel h2 {
+      font-size: 22px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .navPanel a {
+      display: block;
+      padding: 12px 18px;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      font-weight: 500;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .navPanel a:hover {
+      background-color: rgba(255,255,255,0.2);
+    }
+
+    .dropNotify {
+      display: none;
+      padding-left: 15px;
+    }
+
+    /* Main content alignment */
+    .viewBox {
+      margin-left: 260px; /* space for nav */
+      padding: 20px;
+    }
+
+    #fundPayments .gridCards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    #fundPayments .infoCard {
+      background-color: white;
+      border: 1px solid #c3e6cb;
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      width: 280px;
+    }
+
+    #fundPayments .infoCard .row {
+      display: flex;
+      justify-content: space-between;
+      margin: 6px 0;
+    }
+
+    #fundPayments .infoCard .row strong {
+      width: 100px;
+      font-weight: 600;
+    }
+
+    #fundPayments .infoCard .row span {
+      flex: 1;
+      text-align: right;
+    }
+
+    #fundPayments .status-btn {
+      border-radius: 15px;
+      border: none;
+      background-color: lightgrey;
+      padding: 5px 10px;
+      cursor: default;
+    }
+    .viewBox {
+    margin-left: 300px; /* space for nav */
+    padding: 20px;
+  }
+
+  </style>
+</head>
+
+<body>
+  <div class="navPanel">
+    <h2>Admin Control</h2>
+   <a th:href="@{/admin/home/dashboard}" style="text-decoration:none; color: white;">🏠 Dashboard</a>
+  <a th:href="@{/admin/home/manage-ngo}" style="text-decoration:none; color: white;"> 🛠 Manage NGO</a>
+  <a th:href="@{/admin/home/notifications}" style="text-decoration:none; color: white;">🔔 Notifications </a>
+  <a th:href="@{/admin/home/fundpay}" style="text-decoration:none; color: white;">💰 Manage Donation</a>
+  <a onclick="adminLogout()">🚪 Logout</a>
+  </div>
+
+  <div id="fundPayments" class="viewBox">
+    <h3>Payment Details</h3>
+    <div class="gridCards">
+
+      <div class="infoCard green">
+        <p class="row"><strong>NGO</strong> <span>Help Hands</span></p>
+        <p class="row"><strong>Paid</strong> <span>₹40,000</span></p>
+        <p class="row"><strong>Date</strong> <span>01 Aug 2025</span></p>
+        <p class="row"><strong>Status</strong> <button class="status-btn">Completed</button></p>
+      </div>
+
+      <div class="infoCard green">
+        <p class="row"><strong>NGO</strong> <span>Care for All</span></p>
+        <p class="row"><strong>Paid</strong> <span>₹25,000</span></p>
+        <p class="row"><strong>Date</strong> <span>28 Jul 2025</span></p>
+        <p class="row"><strong>Status</strong> <button class="status-btn">Completed</button></p>
+      </div>
+
+      <div class="infoCard green">
+        <p class="row"><strong>NGO</strong> <span>Youth Empower</span></p>
+        <p class="row"><strong>Paid</strong> <span>₹15,500</span></p>
+        <p class="row"><strong>Date</strong> <span>22 Jul 2025</span></p>
+        <p class="row"><strong>Status</strong> <button class="status-btn">Completed</button></p>
+      </div>
+
+      <div class="infoCard green">
+        <p class="row"><strong>NGO</strong> <span>Future Bright</span></p>
+        <p class="row"><strong>Paid</strong> <span>₹50,000</span></p>
+        <p class="row"><strong>Date</strong> <span>10 Jul 2025</span></p>
+        <p class="row"><strong>Status</strong> <button class="status-btn">Completed</button></p>
+      </div>
+
+    </div>
+  </div>
+  <script>
+     function adminLogout() {
+    alert("Logged out successfully!");
+    window.location.href = "login.html";
+  }
+
+  </script>
+</body>
+</html>

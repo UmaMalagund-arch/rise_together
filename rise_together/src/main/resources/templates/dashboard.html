@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>NGO Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+        body {
+            display: flex;
+            font-family: 'Segoe UI', sans-serif;
+            background: #f4f4f4;
+        }
+
+        .sidebar {
+            width: 260px;
+            background-color:rgb(48, 1, 75);
+            height: 100vh;
+            color: white;
+            padding-top: 20px;
+            position: fixed;
+        }
+         .sidebar i {
+      margin-right: 12px;
+      font-size: 18px;
+    }
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            padding: 12px 25px;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+
+        .sidebar a i {
+            margin-right: 15px;
+        }
+
+        .sidebar a:hover {
+            background-color: #3d0066;
+        }
+
+        .content {
+            margin-left: 250px;
+            padding: 30px;
+            width: 90%;
+        }
+
+        .header {
+            background-color: #d7f5dd;
+            padding: 30px;
+            text-align: center;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            font-family: 'Cursive';
+            background: linear-gradient(to right, orange, yellow, green, blue, indigo, violet);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .dashboard-card {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+        }
+
+        .ngo-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .ngo-logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 20px;
+            border: 4px solid #f0f0f0;
+        }
+
+        .ngo-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .ngo-name {
+            font-size: 28px;
+            font-weight: bold;
+            color: #4b0066;
+        }
+
+        .ngo-details {
+            margin-top: 20px;
+        }
+
+        .ngo-details p {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .ngo-details i {
+            margin-right: 10px;
+            color: #4b0066;
+        }
+
+         .profile-container {
+      max-width: 60%;
+      margin: 20px auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+ 
+    
+    .banner-image {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .header-section {
+      display: flex;
+      align-items: center;
+      padding: 20px 30px;
+      gap: 20px;
+    }
+
+    .header-section img.logo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      object-fit: cover;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .header-section .ngo-name {
+      font-size: 26px;
+      font-weight: 600;
+      color: #30014b;
+    }
+
+    .profile-content {
+      padding: 0 30px 30px;
+    }
+
+    .profile-content p {
+      font-size: 16px;
+      color: #444;
+      margin: 12px 0;
+    }
+
+    .icon {
+      color: #2575fc;
+      margin-right: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .header-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .header-section .ngo-name {
+        font-size: 22px;
+      }
+    }
+    .banner-image{
+        background-color: #d4f1d5;
+    }
+    #icon{
+      color: #30014b;
+    }
+     .welcome-heading {
+    text-align: center;
+    font-size: 2.5cap;
+    position: relative;
+    top: -150px;
+    left: 30px;
+    font-weight: 800;
+    margin: 30px 0;
+    background: linear-gradient(to right, yellow, #b30059, green); /* Yellow, NGO Color, Green */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: fadeIn 1s ease-in-out;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+    </style>
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>NGO Panel</h2>
+    <a th:href="@{/ngo/home/ngoPage}" style="text-decoration:none; color: white;"><i class="fas fa-hand-holding-heart"></i>NGO</a><br>
+    <a th:href="@{/ngo/home/reports}" style="text-decoration:none;"><div><i class="fas fa-clipboard-list" style="color: orange;"></i>Reports</div></a><br>
+    <a href="#"><i class="fas fa-donate" style="color: rgb(18, 147, 59);"></i> Donation Summary</a><br>
+    <a th:href="@{/ngo/home/event}" style="text-decoration:none; "><div><i class="fas fa-calendar-alt" style="color: rgb(83, 159, 235);"></i> Events</div><br></a><br>
+    <a href="#"><i class="fas fa-sign-out-alt" style="color: tomato;"></i> Logout</a>
+</div>
+
+<div class="content">
+     <div id="dashboard" class="main-content main-section">
+    <div class="profile-container">
+    <div class="banner-image"> 
+      <img src="https://thumbs.dreamstime.com/b/helping-hands-care-hands-logo-318500757.jpg" alt="" height="200px" width="200px" style="mix-blend-mode: multiply;">
+    <h1 class="welcome-heading">Welcome to Dashboard</h1>
+    </div>
+    <!-- Logo and NGO Name -->
+    <div class="header-section">
+      <img class="logo" src="https://cdn.dribbble.com/userupload/4265414/file/original-bb8c4b94202aed0a11d025ef9932f3be.png?resize=1208x1207" alt="NGO Logo" style="mix-blend-mode: multiply;">
+      <div class="ngo-name"><span th:text="${ngoRegisterDTO.name}"></span></div>
+    </div>
+
+    <!-- Profile Info -->
+    <div class="profile-content">
+      <p><i class="fas fa-envelope icon" id="icon"></i><strong>Email:</strong><span th:text="${ngoRegisterDTO.email}" ></span> </p>
+      <p><i class="fas fa-phone icon" id="icon"></i><strong>Phone:</strong><span th:text="${ngoRegisterDTO.telephoneNumber}"></span></p>
+      <p><i class="fas fa-id-card icon" id="icon"></i><strong>Registration ID:</strong><span th:text="${ngoRegisterDTO.registerNumber}"></span></p>
+      <p><i class="fas fa-map-marker-alt icon" id="icon"></i><strong>Address:</strong><span th:text="${ngoRegisterDTO.address}"></span> </p>
+      <p><i class="fas fa-info-circle icon" id="icon"></i><strong>About Us:</strong><span th:text="${ngoRegisterDTO.description}"></span></p>
+    </div>
+  </div>
+</div>
+</div>
+
+</body>
+</html>

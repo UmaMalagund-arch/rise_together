@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Donate Now</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      width: 400px;
+    }
+
+    h2 {
+      color: #2d014e;
+      margin-bottom: 25px;
+    }
+
+    .payment-option {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .payment-option label {
+      margin-right: 15px;
+    }
+
+    #upiField {
+      display: none;
+      margin-top: 10px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .qr-section {
+      display: block;
+    }
+
+    .qr-section img {
+      width: 200px;
+      margin: 15px 0;
+    }
+
+    .scan-text {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .upi-icons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 10px;
+    }
+
+    .upi-icons img {
+      width: 40px;
+      height: auto;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      background-color: #2d014e;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #4e1c80;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Make a Donation</h2>
+
+    <div class="payment-option">
+      <label><input type="radio" name="paymentMode" value="qr" checked onclick="togglePayment('qr')"> QR Code</label>
+      <label><input type="radio" name="paymentMode" value="upi" onclick="togglePayment('upi')"> UPI ID</label>
+    </div>
+
+    <!-- QR Code Section -->
+    <div class="qr-section" id="qrSection">
+      <img src="https://1.bp.blogspot.com/-dHN4KiD3dsU/XRxU5JRV7DI/AAAAAAAAAz4/u1ynpCMIuKwZMA642dHEoXFVKuHQbJvwgCEwYBhgL/s1600/qr-code.png" alt="QR Code">
+      <div class="scan-text">Scan this QR with any UPI app:</div>
+      <div class="upi-icons">
+        <img src="https://tse4.mm.bing.net/th/id/OIP.F_ErCaunr4VRuMuUy39HtAHaGT?pid=Api&P=0&h=180" alt="PhonePe" title="PhonePe">
+        <img src="https://www.nicepng.com/png/detail/769-7692873_download-google-pay-logo-png.png" alt="Google Pay" title="Google Pay">
+        <img src="https://static.vecteezy.com/system/resources/previews/019/017/541/original/paytm-transparent-free-png.png" alt="Paytm" title="Paytm">
+      </div>
+    </div>
+
+    <!-- UPI ID Field -->
+    <div id="upiField">
+      <input type="text" placeholder="Enter your UPI ID">
+      <button>Verify & Pay</button>
+    </div>
+  </div>
+
+  <script>
+    function togglePayment(mode) {
+      const qrSection = document.getElementById('qrSection');
+      const upiField = document.getElementById('upiField');
+
+      if (mode === 'qr') {
+        qrSection.style.display = 'block';
+        upiField.style.display = 'none';
+      } else {
+        qrSection.style.display = 'none';
+        upiField.style.display = 'block';
+      }
+    }
+  </script>
+
+</body>
+</html>

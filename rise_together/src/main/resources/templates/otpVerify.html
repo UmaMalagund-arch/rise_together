@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Verify OTP</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .otp-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 400px;
+        }
+        h2 { color: #2d014e; }
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin: 15px 0;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            width: 80%;
+            padding: 12px;
+            background-color: #2d014e;
+            color: #fff;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #52167f;
+        }
+        .error {
+            color: red;
+            margin-bottom: 10px;
+        }
+        .message {
+            color: green;
+        }
+        .resend {
+            display: block;
+            margin-top: 10px;
+            color: #2d014e;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<div class="otp-container">
+    <h2>Email Verification</h2>
+    <p>Please enter the OTP sent to your email</p>
+
+    <div th:if="${error}" class="error" th:text="${error}"></div>
+    <div th:if="${message}" class="message" th:text="${message}"></div>
+
+    <form action="/verify-otp" method="post">
+        <input type="text" name="otp" placeholder="Enter OTP" required>
+        <input type="submit" value="Verify">
+    </form>
+
+    <a href="/resend-otp" class="resend">Resend OTP</a>
+</div>
+</body>
+</html>

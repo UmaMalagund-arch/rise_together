@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      min-height: 100vh;
+      background-color: #f4f4f4;
+    }
+
+    /* Sidebar styles */
+    .sidebar {
+      width: 260px;
+      background-color: rgb(48,1,75);
+      color: white;
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar h2 {
+      margin-bottom: 30px;
+      font-size: 22px;
+      text-align: center;
+    }
+
+    .sidebar div {
+      cursor: pointer;
+      color: white;
+      padding: 14px 15px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      border-radius: 8px;
+      transition: background 0.3s;
+      font-size: 16px;
+    }
+
+    .sidebar div:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .sidebar i {
+      margin-right: 12px;
+      font-size: 18px;
+    }
+
+    .sidebar .fa-clipboard-list { color: #ffcc00; }
+    .sidebar .fa-donate         { color: #4caf50; }
+    .sidebar .fa-calendar-alt   { color: #2196f3; }
+    .sidebar .fa-sign-out-alt   { color: #f44336; }
+
+  
+  .card{height: 500px; width:360px;background:#fff;border:1px solid #e6e8eb;border-radius:16px;box-shadow:0 4px 14px rgba(0,0,0,.06);overflow:hidden;margin:12px auto; padding: 20px;}
+  .card-header{padding:12px 16px;background:#f7f9fc;border-bottom:1px solid #eef0f3}
+  .name{font-weight:600}
+  .details{color:#6b7280;font-size:.85rem}
+  .card-body{padding:16px;text-align:center}
+  .avatar{width:110px;height:110px;border-radius:50%;object-fit:cover;border:3px solid #eef2f7}
+  .person-name{font-size:1.1rem;font-weight:600;margin:10px 0 4px}
+  .kv{margin:4px 0;color:#374151}
+  .status{margin-top:10px;display:inline-block;padding:6px 10px;border-radius:999px;font-size:.85rem;font-weight:600}
+  .status.PENDING{background:#ecfdf5;color:#059669;border:1px solid #a7f3d0}
+
+  .username{position: relative;left: 120px;}
+  .phone{position: relative; left: 5px;}
+  .email{position: relative; right: 10px;}
+
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>NGO Panel</h2>
+    <a th:href="@{/ngo/home/ngoPage}" style="text-decoration:none;"><div><i class="fas fa-hand-holding-heart"></i>NGO</div></a>
+    <a th:href="@{/ngo/home/reports}" style="text-decoration:none;"><div><i class="fas fa-clipboard-list"></i>Reports</div></a>
+    <!-- <div onclick="showSection('reports')"><i class="fas fa-clipboard-list"></i> Reports</div> -->
+    <div onclick="showSection('donations')"><i class="fas fa-donate"></i> Donation Summary</div>
+    <div style="position: relative; left: -16px;top: -12px;"><a th:href="@{/ngo/home/event}" style="text-decoration:none;"><div><i class="fas fa-calendar-alt"></i> Events</div></a></div>
+    <div style="position: relative; left: -1px;top: -40px;"><i class="fas fa-sign-out-alt"></i> Logout</div>
+  </div>
+
+
+  <!-- Main content -->
+<div class="main">
+  <h1 style="color: rgb(45,1,78);padding: 40px;">Reports</h1>  
+
+  <!-- Report cards -->
+  <div th:each="card : ${reportCards}" class="card">
+      <!-- Reported Person -->
+       <p> <span th:text="${card['citizen'].username}" class="username"></span></p>
+      <p><span th:text="${card['citizen'].email}" class="email"></span>|  <span th:text="${card['citizen'].phone}" class="phone"></span></p>
+      <!-- <p>person details</p> -->
+      <br> <b>Person Details</b>  <br> 
+      <img th:src="@{'/uploads/' + ${#strings.substring(card['report'].image, 36)}}" 
+     alt="Reported Image" class="avatar" />
+
+
+      <h3 th:text="${card['report'].name}">Reported Person Name</h3>
+      <p>Age: <span th:text="${card['report'].age}"></span></p>
+      <p>Category: <span th:text="${card['report'].category}"></span></p>
+      <p>Location: <span th:text="${card['report'].location}"></span></p>
+      <p>Status: <span th:text="${card['report'].status}"></span></p>  
+      
+  </div>
+</div>
+
+</body>
+</html>
