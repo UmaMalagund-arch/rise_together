@@ -1,59 +1,65 @@
 pipeline {
     agent any
 
-    environment {
-        REGISTRY = "umamalagund9620"
-        IMAGE_NAME = "rise_together"
-        TAG = "latest"
+    tools {
+        maven 'maven'   // Jenkins Maven installation name
     }
 
     stages {
+
         stage('Checkout') {
             steps {
-                checkout scm
+                echo "Pulling project from GitHub..."
+                git branch: 'main',
+                    url: 'https://github.com/UmaMalagund-arch/rise_together.git'
             }
         }
 
-        stage('Build & Test') {
+        stage('Build Maven Project') {
             steps {
-                sh 'mvn -B clean test'
-            }
-        }
-
-        stage('Build JAR') {
-            steps {
-                sh 'mvn -B clean package -DskipTests'
+                echo "Building Spring Boot application..."
+                sh 'mvn clean package -DskipTests'
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                sh "docker build -t ${REGISTRY}/${IMAGE_NAME}:${TAG} ."
-            }
-        }
-
-        stage('Login to Docker Registry') {
-            steps {
-                withCredentials([usernamePassword(
-                    credentialsId: 'dockerhub-creds',
-                    usernameVariable: 'USER',
-                    passwordVariable: 'PASS'
-                )]) {
-                    sh "echo \$PASS | docker login -u \$USER --password-stdin"
+                script {
+                    echo "Building Docker image..."
+                    sh "docker build -t rise_together ."
                 }
             }
         }
 
-        stage('Push Image') {
+        stage('Push Image to Docker Hub') {
             steps {
-                sh "docker push ${REGISTRY}/${IMAGE_NAME}:${TAG}"
+                script {
+                    echo 'Pushing Docker image to DockerHub...'
+
+                    withCredentials([usernamePassword(
+                        credentialsId: 'dockerhub-creds',
+                        usernameVariable: 'DOCKER_USER',
+                        passwordVariable: 'DOCKER_PASS'
+                    )]) {
+                        sh "docker login -u $DOCKER_USER -p $DOCKER_PASS"
+                        sh "docker tag rise_together $DOCKER_USER/rise_together:latest"
+                        sh "docker push $DOCKER_USER/rise_together:latest"
+                    }
+                }
+            }
+        }
+
+        stage('Deploy to Server') {
+            steps {
+                script {
+                    echo "Deploying on your server..."
+
+                    sh "docker rm -f rise_together || true"
+
+                    sh "docker run -d --name rise_together -p 9000:8080 umamalagund9620/rise_together:latest"
+                }
             }
         }
     }
-
-    post {
-        always {
-            echo "Pipeline completed"
-        }
-    }
 }
+
