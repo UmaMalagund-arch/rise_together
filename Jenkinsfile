@@ -1,6 +1,9 @@
-
 pipeline {
     agent any
+
+    tools {
+        maven 'Maven-3.9'
+    }
 
     environment {
         REGISTRY = "umamalagund9620"
@@ -29,11 +32,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                script {
-                    sh """
-                        docker build -t ${REGISTRY}/${IMAGE_NAME}:${TAG} .
-                    """
-                }
+                sh "docker build -t ${REGISTRY}/${IMAGE_NAME}:${TAG} ."
             }
         }
 
@@ -52,15 +51,6 @@ pipeline {
         stage('Push Image') {
             steps {
                 sh "docker push ${REGISTRY}/${IMAGE_NAME}:${TAG}"
-            }
-        }
-
-        stage('Deploy') {
-            when {
-                expression { return false } // enable when ready
-            }
-            steps {
-                echo "Add your deployment commands here"
             }
         }
     }
