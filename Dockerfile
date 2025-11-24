@@ -1,21 +1,14 @@
-FROM maven:3.9.6-eclipse-temurin-17 AS build
-WORKDIR /app
-COPY pom.xml .
-RUN mvn -B dependency:go-offline
+FROM tomcat:9-jdk17
+LABEL maintainer="umamalagund635@gmail.com"
 
-# Copy source and build the JAR
-COPY src ./src
-RUN mvn -B clean package -DskipTests
+# Remove default ROOT folder
+RUN rm -rf /usr/local/tomcat/webapps/ROOT
 
-# -------- Runtime Stage --------
-FROM eclipse-temurin:17-jre
+# Copy your generated WAR file from target folder
+COPY target/rise_together.war /usr/local/tomcat/webapps/ROOT.war
 
-WORKDIR /app
-
-# Copy JAR from the build stage
-COPY --from=build /app/target/*.jar app.jar
-
-# Expose Spring Boot default port
+# Custom port (NOT 8080)
 EXPOSE 8084
 
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Start Tomcat
+CMD ["catalina.sh", "run"]
