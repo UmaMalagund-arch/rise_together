@@ -8,7 +8,7 @@ RUN rm -rf /usr/local/tomcat/webapps/ROOT
 COPY target/rise_together.war /usr/local/tomcat/webapps/ROOT.war
 
 # Custom port (NOT 8080)
-EXPOSE 8084
+EXPOSE 8088
 
 # Start Tomcat
 CMD ["catalina.sh", "run"]
